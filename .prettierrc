@@ -1,0 +1,34 @@
+{
+	"printWidth": 100,
+	"useTabs": true,
+	"tabWidth": 2,
+	"trailingComma": "all",
+	"semi": false,
+	"singleQuote": true,
+	"bracketSpacing": true,
+	"arrowParens": "always",
+	"endOfLine": "lf",
+	"jsxSingleQuote": true,
+	"importOrder": [
+		"^@react/(.*)$",
+		"^@react-dom",
+		"^@react-dom/(.*)$",
+		"react-router-dom",
+		"@tanstack/react-query",
+
+		"lucide-react",
+		"^@components/(.*)$",
+		"./(.*)$",
+		"../(.*)$",
+		"^@screens/(.*)$",
+		"^@hooks/(.*)$",
+		"^@ts/(.*)$",
+		"^@utils/(.*)$",
+		"@configs/(.*)$",
+		"^@assets/(.*)$",
+		".css$"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true,
+	"plugins": ["@trivago/prettier-plugin-sort-imports"]
+}

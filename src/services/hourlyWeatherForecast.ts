@@ -15,6 +15,8 @@ export const getHourlyWeatherForecast = async ({
 		)
 		const data = (await response.json()) as HourlyWeatherForecastApiResponse
 
+		const currentHour = new Date().getHours()
+
 		const responseData: HourlyWeatherForecast = {
 			hourly: data.hourly.time.map((time, index) => {
 				const weatherCode = data.hourly.weather_code[index]
@@ -25,7 +27,7 @@ export const getHourlyWeatherForecast = async ({
 				const weatherData = getWeatherDescription(weatherCode, isDay ? 1 : 0)
 
 				return {
-					time: String(date.getHours() + ':00'),
+					time: currentHour === date.getHours() ? 'Сейчас' : String(date.getHours() + ':00'),
 					temperature: data.hourly.temperature_2m[index],
 					precipitationProbability: data.hourly.precipitation_probability[index],
 					weatherCode: data.hourly.weather_code[index],

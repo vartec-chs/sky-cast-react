@@ -19,6 +19,7 @@ export const OneHourWeatherForecastCard: FC<Props> = ({
 	precipitationProbability,
 }) => {
 	return (
+
 		<Card
 			className={cn('flex-1 rounded-2xl px-2 py-2 min-w-20 border-none shadow-none', className)}
 		>

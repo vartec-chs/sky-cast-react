@@ -4,6 +4,10 @@ import { ThemeProvider } from '@/components/ui/theme-provider.tsx'
 import { ToasterWrapper } from '@/components/ui/toaster-wrapper.tsx'
 import ReactDOM from 'react-dom/client'
 
+
+navigator.serviceWorker.register('./sw.js')
+
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<ThemeProvider defaultTheme='light' storageKey='vite-ui-theme'>
 		<ToasterWrapper />

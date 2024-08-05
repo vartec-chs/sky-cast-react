@@ -22,7 +22,7 @@ export const useIpLocality = () => {
 		const responseLatLone = await fetch(
 			`https://nominatim.openstreetmap.org/reverse?lat=${data.latitude}&lon=${data.longitude}&format=json`,
 		)
-		const dataLatLone = (await response.json()) as LatLonUserLocality
+		const dataLatLone = (await responseLatLone.json()) as LatLonUserLocality
 
 		setLocality(data)
 		setUserLocality({

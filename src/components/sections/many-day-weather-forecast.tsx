@@ -50,7 +50,7 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 					</TabsTrigger>
 				</TabsList>
 			</Tabs>
-			<div className='w-full grid gap-4 relative grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] min-h-40 border rounded-3xl'>
+			<div className='w-full grid gap-4 relative grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] min-h-40'>
 				{!weatherForecast || weatherLoading ? (
 					<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
 						<LoaderPinwheel className='w-8 h-8 m-auto animate-spin' />

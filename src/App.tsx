@@ -1,12 +1,8 @@
-import { ManyDayWeatherForecastSection } from './components/sections/many-day-weather-forecast'
 import { CurrentWeatherForecastSection } from '@/components/sections/current-weather-forecast'
+import { ManyDayWeatherForecastSection } from '@/components/sections/many-day-weather-forecast'
 import { Header } from '@/components/shared/header'
-import { useIpLocality } from './hooks/useIpLocality'
 
 function App() {
-	// const {locality, getLocality} = useIpLocality()
-
-
 	return (
 		<>
 			<Header />

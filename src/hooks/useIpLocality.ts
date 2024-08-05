@@ -17,6 +17,8 @@ export const useIpLocality = () => {
 			},
 		)
 
+		console.log(await response.json())
+
 		const data = (await response.json()) as IpUserLocality
 
 		setLocality(data)

@@ -15,6 +15,9 @@ export const getCurrentWeatherForecast = async ({
 	try {
 		const response = await fetch(
 			`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m,wind_direction_10m&wind_speed_unit=ms&timezone=Europe%2FMoscow&forecast_days=1`,
+			{
+				referrerPolicy: 'unsafe-url',
+			},
 		)
 		const data = (await response.json()) as CurrentWeatherForecastApiResponse
 
@@ -22,6 +25,9 @@ export const getCurrentWeatherForecast = async ({
 
 		const yesterdayTemperatureResponse = await fetch(
 			`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&wind_speed_unit=ms&timezone=Europe%2FMoscow&past_days=1&forecast_days=1`,
+			{
+				referrerPolicy: 'unsafe-url',
+			},
 		)
 		const yesterdayTemperatureData =
 			(await yesterdayTemperatureResponse.json()) as YesterdayTemperatureApiResponse

@@ -12,6 +12,9 @@ export const getHourlyWeatherForecast = async ({
 	try {
 		const response = await fetch(
 			`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,precipitation_probability,weather_code&wind_speed_unit=ms&timezone=Europe%2FMoscow&forecast_days=1`,
+			{
+				referrerPolicy: 'unsafe-url',
+			},
 		)
 		const data = (await response.json()) as HourlyWeatherForecastApiResponse
 
@@ -37,7 +40,7 @@ export const getHourlyWeatherForecast = async ({
 
 		return responseData
 	} catch (error) {
-		console.log('getHourlyWeatherForecast error', error)
+		console.log('Get hourly weather error', error)
 		return undefined
 	}
 }

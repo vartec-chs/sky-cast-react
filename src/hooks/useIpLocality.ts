@@ -12,6 +12,9 @@ export const useIpLocality = () => {
 		setLoading(true)
 		const response = await fetch(
 			'http://ip-api.com/json?lang=ru&fields=status,region,regionName,city,lat,lon',
+			{
+				referrerPolicy: 'unsafe-url',
+			},
 		)
 
 		const data = (await response.json()) as IpUserLocality

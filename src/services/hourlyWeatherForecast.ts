@@ -18,7 +18,7 @@ export const getHourlyWeatherForecast = async ({
 		)
 		const data = (await response.json()) as HourlyWeatherForecastApiResponse
 
-		console.log(data)
+		console.log(lat, lon)
 
 		const responseData: HourlyWeatherForecast = {
 			hourly: data.hourly.time.map((time, index) => {

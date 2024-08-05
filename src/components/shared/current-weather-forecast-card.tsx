@@ -39,7 +39,7 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 			) : (
 				<>
 					<CardHeader className='flex flex-col p-4 '>
-						<h2 className={cn('text-lg', localityNameLength > 30 && 'text-sm')}>
+						<h2 className={cn('text-lg', localityNameLength > 50 && 'text-sm')}>
 							<ScrollArea className='w-full h-10'>
 								{locality ? locality.name : <LoaderPinwheel className='animate-spin' size={16} />}
 							</ScrollArea>

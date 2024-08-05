@@ -1,6 +1,7 @@
 import { CurrentWeatherForecastSection } from '@/components/sections/current-weather-forecast'
 import { ManyDayWeatherForecastSection } from '@/components/sections/many-day-weather-forecast'
 import { Header } from '@/components/shared/header'
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
 	return (
@@ -10,6 +11,7 @@ function App() {
 				<CurrentWeatherForecastSection />
 				<ManyDayWeatherForecastSection />
 			</main>
+			<Analytics />
 		</>
 	)
 }

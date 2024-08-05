@@ -1,5 +1,3 @@
-
-
 export interface SecrchLocality {
 	place_id: number
 	licence: string
@@ -17,20 +15,16 @@ export interface SecrchLocality {
 	boundingbox: string[]
 }
 
-
-
 export interface IpUserLocality {
-	region: string
 	regionName: string
-	city: string
-	lat: string
-	lon: string
+	cityName: string
+	latitude: string
+	longitude: string
 }
-
 
 export interface LatLonUserLocality {
 	address: {
-		city: string,
-		state: string,
+		city: string
+		state: string
 	}
 }

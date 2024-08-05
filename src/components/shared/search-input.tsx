@@ -24,7 +24,7 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 
 	const setUserLocality = useUserLocality((state) => state.setLocality)
 
-	const [, cansel] = useDebounce(
+	const [, _] = useDebounce(
 		async () => {
 			await searchLocality(searchText)
 				.then((data) => setLocality(data))

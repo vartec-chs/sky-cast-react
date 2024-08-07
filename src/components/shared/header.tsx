@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { LoaderPinwheel, MapPin, Moon, Search, Settings, Sun } from 'lucide-react'
+import { LoaderPinwheel, MapPin, Moon, Search, Sun } from 'lucide-react'
 
 import { Button } from '../ui/button'
 import { useTheme } from '../ui/theme-provider'

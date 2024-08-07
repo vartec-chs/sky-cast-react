@@ -10,8 +10,8 @@
 		},
 		{ "purpose": "any", "sizes": "512x512", "src": "icon512_rounded.png", "type": "image/png" }
 	],
-	"orientation": "any",
-	"display": "standalone",
+	"orientation": "portrait",
+	"display": "",
 	"dir": "auto",
 	"lang": "ru",
 	"name": "SkyCast",

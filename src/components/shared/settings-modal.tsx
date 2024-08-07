@@ -1,6 +1,4 @@
-import { Copy, Settings } from 'lucide-react'
-
-import { Label } from '../ui/label'
+import { Settings } from 'lucide-react'
 import { useTheme } from '../ui/theme-provider'
 import { Button } from '@/components/ui/button'
 import {

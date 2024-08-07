@@ -1,4 +1,6 @@
+import { weatherApiUrl } from '@/config'
 import { getWeatherDescription } from '@/lib/weatherСode'
+import { WeatherServiceArgs } from '@/types/other'
 import { DailyWeatherForecastApiResponse } from '@/types/wetherForecastApiResponse'
 import { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
@@ -6,16 +8,25 @@ export const getDailyWeatherForecast = async ({
 	lat,
 	lon,
 	days,
-}: {
-	lat: number
-	lon: number
-	days: number
-}): Promise<DailyWeatherForecast | undefined> => {
+	weatherModel,
+}: WeatherServiceArgs & { days: number }): Promise<DailyWeatherForecast | undefined> => {
 	try {
-		const response = await fetch(
-			`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&timezone=Europe%2FMoscow&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,wind_direction_10m_dominant&wind_speed_unit=ms&forecast_days=${days}`,
-		)
+		const paramModel =
+			weatherModel && weatherModel !== 'default'
+				? '&' + new URLSearchParams({ model: weatherModel }).toString()
+				: ''
 
+		const params = new URLSearchParams({
+			latitude: lat.toString(),
+			longitude: lon.toString(),
+			daily:
+				'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,wind_direction_10m_dominant',
+			wind_speed_unit: 'ms',
+			timezone: 'Europe/Moscow',
+			forecast_days: String(days),
+		})
+
+		const response = await fetch(weatherApiUrl.toString() + '?' + params.toString() + paramModel)
 		const data = (await response.json()) as DailyWeatherForecastApiResponse
 
 		const responseData: DailyWeatherForecast = {

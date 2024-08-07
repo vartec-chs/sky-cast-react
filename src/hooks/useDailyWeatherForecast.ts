@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { getDailyWeatherForecast } from '@/services/dailyWeatherForecast'
+import { WeatherServiceArgs } from '@/types/other'
 import { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
 export const useDailyWeatherForecast = () => {
@@ -11,13 +12,10 @@ export const useDailyWeatherForecast = () => {
 		lat,
 		lon,
 		days,
-	}: {
-		lat: number
-		lon: number
-		days: number
-	}) {
+		weatherModel,
+	}: WeatherServiceArgs & { days: number }) {
 		setLoading(true)
-		await getDailyWeatherForecast({ lat, lon, days })
+		await getDailyWeatherForecast({ lat, lon, days, weatherModel })
 			.then((data) => {
 				setWeatherForecast(data)
 			})

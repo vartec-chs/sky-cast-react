@@ -11,22 +11,22 @@ import { cn } from '@/lib/utils'
 import { PropsWithClassName } from '@/types/other'
 
 export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className }) => {
-	const locality = useUserLocality((state) => state.locality)
+	const [locality, weatherModel] = useUserLocality((state) => [state.locality, state.weatherModel])
 	const { getWeatherForecast, weatherLoading, weatherForecast } = useHourlyWeatherForecast()
 
 	useEffect(() => {
 		if (locality) {
-			getWeatherForecast({ lat: Number(locality.lat), lon: Number(locality.lon) })
+			getWeatherForecast({ lat: Number(locality.lat), lon: Number(locality.lon), weatherModel })
 		}
 	}, [locality])
 
 	return (
 		<Card className={cn('rounded-3xl relative p-0 w-full min-h-[240px]', className)}>
-			{!weatherForecast || weatherLoading ? (
+			{weatherLoading ? (
 				<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
 					<LoaderPinwheel className='animate-spin ' size={32} />
 				</div>
-			) : (
+			) : weatherForecast ? (
 				<>
 					<CardHeader className='p-4'>
 						<CardTitle>Температура</CardTitle>
@@ -50,6 +50,10 @@ export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className })
 						</ScrollArea>
 					</CardContent>
 				</>
+			) : (
+				<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+					<h6 className='text-center'>Нет данных</h6>
+				</div>
 			)}
 		</Card>
 	)

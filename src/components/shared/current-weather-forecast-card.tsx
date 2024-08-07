@@ -12,7 +12,7 @@ import { getWindDirection } from '@/lib/windDirection'
 import { PropsWithClassName } from '@/types/other'
 
 export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }) => {
-	const locality = useUserLocality((state) => state.locality)
+	const [locality, weatherModel] = useUserLocality((state) => [state.locality, state.weatherModel])
 	const { getWeatherForecast, weatherLoading, weatherForecast } = useCurrentWeatherForecast()
 
 	const date = new Date()
@@ -21,9 +21,13 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 
 	useEffect(() => {
 		if (locality) {
-			getWeatherForecast({ lat: Number(locality.lat), lon: Number(locality.lon) })
+			getWeatherForecast({
+				lat: Number(locality.lat),
+				lon: Number(locality.lon),
+				weatherModel,
+			})
 		}
-	}, [locality])
+	}, [locality, weatherModel])
 
 	const img =
 		weatherForecast && weatherForecast.yesterdayTemperature > weatherForecast.temperature
@@ -32,11 +36,11 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 
 	return (
 		<Card className={cn('w-full relative  p-0 rounded-3xl min-h-[355px]', className)}>
-			{!weatherForecast || weatherLoading ? (
+			{weatherLoading ? (
 				<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
 					<LoaderPinwheel className='animate-spin ' size={32} />
 				</div>
-			) : (
+			) : weatherForecast ? (
 				<>
 					<CardHeader className='flex flex-col p-4 '>
 						<h2 className={cn('text-lg', localityNameLength > 50 && 'text-sm')}>
@@ -96,6 +100,10 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 						</div>
 					</CardFooter>
 				</>
+			) : (
+				<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+					<h6 className='text-center'>Нет данных</h6>
+				</div>
 			)}
 		</Card>
 	)

@@ -10,7 +10,8 @@ import { cn } from '@/lib/utils'
 import { PropsWithClassName } from '@/types/other'
 
 export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ className }) => {
-	const locality = useUserLocality((state) => state.locality)
+	const [locality, weatherModel] = useUserLocality((state) => [state.locality, state.weatherModel])
+
 	const [dayForecast, setDayForecast] = useState('3')
 
 	const { getWeatherForecast, weatherLoading, weatherForecast } = useDailyWeatherForecast()
@@ -21,9 +22,10 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 				lat: Number(locality.lat),
 				lon: Number(locality.lon),
 				days: Number(dayForecast),
+				weatherModel,
 			})
 		}
-	}, [locality, dayForecast])
+	}, [locality, dayForecast, weatherModel])
 
 	return (
 		<section className={cn('w-full flex flex-col items-center gap-8', className)}>
@@ -51,12 +53,16 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 				</TabsList>
 			</Tabs>
 			<div className='w-full grid gap-4 relative grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] min-h-40'>
-				{!weatherForecast || weatherLoading ? (
+				{weatherLoading ? (
 					<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
 						<LoaderPinwheel className='w-8 h-8 m-auto animate-spin' />
 					</div>
-				) : (
+				) : weatherForecast ? (
 					weatherForecast.daily.map((item, i) => <DayWeatherForecastCard key={i} {...item} />)
+				) : (
+					<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+						<h6 className='text-center'>Нет данных</h6>
+					</div>
 				)}
 
 				{/* {

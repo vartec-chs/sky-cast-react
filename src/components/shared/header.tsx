@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { LoaderPinwheel, MapPin, Moon, Search, Sun } from 'lucide-react'
+import { LoaderPinwheel, MapPin, Moon, Search, Settings, Sun } from 'lucide-react'
 
 import { Button } from '../ui/button'
 import { useTheme } from '../ui/theme-provider'
@@ -11,6 +11,7 @@ import { useGeolocation } from '@/hooks/useGeolacation'
 import { useIpLocality } from '@/hooks/useIpLocality'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
+import { SettingsModal } from './settings-modal'
 
 export const Header: FC = () => {
 	const { theme, setTheme } = useTheme()
@@ -73,6 +74,7 @@ export const Header: FC = () => {
 						)}
 					</Button>
 					<Button
+						className='max-md:hidden'
 						// className='xs:hidden'
 						variant='outline'
 						size='icon'
@@ -80,6 +82,7 @@ export const Header: FC = () => {
 					>
 						{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
 					</Button>
+					<SettingsModal />
 				</nav>
 			</div>
 		</header>

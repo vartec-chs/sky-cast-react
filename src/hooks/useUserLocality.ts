@@ -1,18 +1,21 @@
 import { create } from 'zustand'
 
 type UserLocality = {
-	locality: {
+	locality?: {
 		name: string
 		lat: string
 		lon: string
-	} | null
+	}
 	isAutoLocality: boolean
-
-	setLocality: (locality: { lat: string; lon: string; name: string } | null) => void
+	weatherModel: string
+	setWeatherModel: (model: string) => void
+	setLocality: (locality: { lat: string; lon: string; name: string } | undefined) => void
 }
 
 export const useUserLocality = create<UserLocality>((set) => ({
-	locality: null,
+	locality: undefined,
 	isAutoLocality: true,
 	setLocality: (locality) => set({ locality, isAutoLocality: false }),
+	setWeatherModel: (model) => set({ weatherModel: model }),
+	weatherModel: 'default',
 }))

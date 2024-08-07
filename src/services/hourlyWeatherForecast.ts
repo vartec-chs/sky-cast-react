@@ -1,18 +1,30 @@
+import { weatherApiUrl } from '@/config'
 import { getWeatherDescription } from '@/lib/weatherСode'
+import { WeatherServiceArgs } from '@/types/other'
 import { HourlyWeatherForecastApiResponse } from '@/types/wetherForecastApiResponse'
 import { HourlyWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
 export const getHourlyWeatherForecast = async ({
 	lat,
 	lon,
-}: {
-	lat: number
-	lon: number
-}): Promise<HourlyWeatherForecast | undefined> => {
+	weatherModel,
+}: WeatherServiceArgs): Promise<HourlyWeatherForecast | undefined> => {
 	try {
-		const response = await fetch(
-			`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,precipitation_probability,weather_code&wind_speed_unit=ms&timezone=Europe%2FMoscow&forecast_days=1`,
-		)
+		const paramModel =
+			weatherModel && weatherModel !== 'default'
+				? '&' + new URLSearchParams({ model: weatherModel }).toString()
+				: ''
+
+		const params = new URLSearchParams({
+			latitude: lat.toString(),
+			longitude: lon.toString(),
+			hourly: 'temperature_2m,precipitation_probability,weather_code',
+			wind_speed_unit: 'ms',
+			timezone: 'Europe/Moscow',
+			forecast_days: '1',
+		})
+
+		const response = await fetch(weatherApiUrl.toString() + '?' + params.toString() + paramModel)
 		const data = (await response.json()) as HourlyWeatherForecastApiResponse
 
 		const currentHour = new Date().getHours()

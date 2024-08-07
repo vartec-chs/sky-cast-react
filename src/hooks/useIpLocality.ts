@@ -10,12 +10,7 @@ export const useIpLocality = () => {
 
 	async function getLocality() {
 		setLoading(true)
-		const response = await fetch(
-			// 'http://ip-api.com/json?lang=ru&fields=status,region,regionName,city,lat,lon',
-			'https://freeipapi.com/api/json',
-		)
-
-		console.log(response)
+		const response = await fetch('https://freeipapi.com/api/json')
 
 		const data = (await response.json()) as IpUserLocality
 
@@ -24,11 +19,15 @@ export const useIpLocality = () => {
 		)
 		const dataLatLone = (await responseLatLone.json()) as LatLonUserLocality
 
+		const nameWithAddress = dataLatLone.address.state
+			? dataLatLone.address.state + ', ' + dataLatLone.address.city
+			: dataLatLone.address.city
+
 		setLocality(data)
 		setUserLocality({
 			lat: data.latitude,
 			lon: data.longitude,
-			name: dataLatLone.address.state + ', ' + dataLatLone.address.city,
+			name: nameWithAddress,
 		})
 		setLoading(false)
 	}

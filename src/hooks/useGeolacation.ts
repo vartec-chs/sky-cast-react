@@ -19,16 +19,20 @@ export const useGeolocation = ({ onError }: { onError?: (error: string) => void 
 				)
 				const data = (await response.json()) as LatLonUserLocality
 
+				const nameWithAddress = data.address.state
+					? data.address.state + ', ' + data.address.city
+					: data.address.city
+
 				setLocation({
 					lat: latitude,
 					lon: longitude,
-					name: data.address.state + ', ' + data.address.city,
+					name: nameWithAddress,
 				})
 
 				setUserLocality({
 					lat: String(latitude),
 					lon: String(longitude),
-					name: data.address.state + ', ' + data.address.city,
+					name: nameWithAddress,
 				})
 
 				setLoading(false)

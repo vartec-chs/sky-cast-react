@@ -1,4 +1,6 @@
+import { weatherApiUrl } from '@/config'
 import { getWeatherDescription } from '@/lib/weatherСode'
+import { WeatherServiceArgs } from '@/types/other'
 import {
 	CurrentWeatherForecastApiResponse,
 	YesterdayTemperatureApiResponse,
@@ -8,22 +10,43 @@ import { CurrentWeatherForecast } from '@/types/wetherForecastServiceReturn'
 export const getCurrentWeatherForecast = async ({
 	lat,
 	lon,
-}: {
-	lat: number
-	lon: number
-}): Promise<CurrentWeatherForecast | undefined> => {
+	weatherModel,
+}: WeatherServiceArgs): Promise<CurrentWeatherForecast | undefined> => {
 	try {
+		const paramModel =
+			weatherModel && weatherModel !== 'default'
+				? '&' + new URLSearchParams({ model: weatherModel }).toString()
+				: ''
+
+		const paramsCurrentWeather = new URLSearchParams({
+			latitude: lat.toString(),
+			longitude: lon.toString(),
+			current:
+				'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m,wind_direction_10m',
+			wind_speed_unit: 'ms',
+			timezone: 'Europe/Moscow',
+			forecast_days: '1',
+		})
+
+		const paramsYesterdayTemperature = new URLSearchParams({
+			latitude: lat.toString(),
+			longitude: lon.toString(),
+			hourly: 'temperature_2m',
+			wind_speed_unit: 'ms',
+			timezone: 'Europe/Moscow',
+			past_days: '1',
+			forecast_days: '1',
+		})
+
 		const response = await fetch(
-			`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m,wind_direction_10m&wind_speed_unit=ms&timezone=Europe%2FMoscow&forecast_days=1`,
-			
+			weatherApiUrl.toString() + '?' + paramsCurrentWeather.toString() + paramModel,
 		)
 		const data = (await response.json()) as CurrentWeatherForecastApiResponse
 
 		const date = new Date(data.current.time)
 
 		const yesterdayTemperatureResponse = await fetch(
-			`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&wind_speed_unit=ms&timezone=Europe%2FMoscow&past_days=1&forecast_days=1`,
-			
+			weatherApiUrl.toString() + '?' + paramsYesterdayTemperature.toString() + paramModel,
 		)
 		const yesterdayTemperatureData =
 			(await yesterdayTemperatureResponse.json()) as YesterdayTemperatureApiResponse

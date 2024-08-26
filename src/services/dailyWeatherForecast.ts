@@ -9,7 +9,7 @@ export const getDailyWeatherForecast = async ({
 	lon,
 	days,
 	weatherModel,
-}: WeatherServiceArgs & { days: number }): Promise<DailyWeatherForecast | undefined> => {
+}: WeatherServiceArgs & { days: number }): Promise<DailyWeatherForecast> => {
 	try {
 		const paramModel =
 			weatherModel && weatherModel !== 'default'
@@ -69,7 +69,6 @@ export const getDailyWeatherForecast = async ({
 
 		return responseData
 	} catch (error) {
-		console.log('Daily weather forecast error: ', error)
-		return undefined
+		throw new Error(String(error))
 	}
 }

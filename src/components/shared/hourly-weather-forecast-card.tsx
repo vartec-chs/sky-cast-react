@@ -25,7 +25,7 @@ export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className })
 		<Card className={cn('rounded-3xl relative p-0 w-full min-h-[240px]', className)}>
 			<CardHeader className='p-4'>
 				<CardTitle>Температура</CardTitle>
-				<CardDescription>Средняя за 24 часа</CardDescription>
+				<CardDescription>Средняя на сегодня по часа</CardDescription>
 			</CardHeader>
 			<CardContent className='grid grid-cols-1 p-0 px-4 pb-4 '>
 				<ScrollArea className='w-full whitespace-nowrap'>

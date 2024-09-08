@@ -7,11 +7,11 @@ import { Button } from '../ui/button'
 import { useTheme } from '../ui/theme-provider'
 import { Logo } from './logo'
 import { SearchInput } from './search-input'
+import { SettingsModal } from './settings-modal'
 import { useGeolocation } from '@/hooks/useGeolacation'
 import { useIpLocality } from '@/hooks/useIpLocality'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
-import { SettingsModal } from './settings-modal'
 
 export const Header: FC = () => {
 	const { theme, setTheme } = useTheme()

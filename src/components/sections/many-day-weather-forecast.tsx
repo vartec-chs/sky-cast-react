@@ -1,9 +1,8 @@
 import { FC, useState } from 'react'
 import { useQuery } from 'react-query'
 
-import { LoaderPinwheel } from 'lucide-react'
-
 import { DayWeatherForecastCard } from '../shared/day-weather-forecast-card'
+import { Skeleton } from '../ui/skeleton'
 import { Tabs, TabsList, TabsTrigger } from '../ui/tabs'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
@@ -28,8 +27,6 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 		enabled: !!locality,
 	})
 
-	
-
 	return (
 		<section className={cn('w-full flex flex-col items-center gap-8', className)}>
 			<h1 className='text-2xl font-bold'>
@@ -40,7 +37,6 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 				value={dayForecast}
 				onValueChange={(value) => {
 					setDayForecast(value)
-					// if (locality) getWeather(value)
 				}}
 			>
 				<TabsList>
@@ -56,23 +52,23 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 				</TabsList>
 			</Tabs>
 			<div className='w-full grid gap-4 relative grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] min-h-40'>
-				{query.isLoading ? (
-					<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-						<LoaderPinwheel className='w-8 h-8 m-auto animate-spin' />
-					</div>
-				) : query.data ? (
-					query.data.daily.map((item, i) => <DayWeatherForecastCard key={i} {...item} />)
-				) : (
-					<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-						<h6 className='text-center'>Нет данных</h6>
-					</div>
-				)}
-
-				{/* {
-					[...Array(Number(dayForecast))].map((_, i) => (
-						<DayWeatherForecastCard key={i} />
-					))
-				} */}
+				{query.isLoading
+					? new Array(Number(dayForecast)).fill(null).map((_, i) => (
+							<Skeleton
+								key={i}
+								className='w-full
+						 h-[217px] rounded-3xl'
+							/>
+						))
+					: query.data
+						? query.data.daily.map((item, i) => <DayWeatherForecastCard key={i} {...item} />)
+						: new Array(Number(dayForecast)).fill(null).map((_, i) => (
+								<Skeleton
+									key={i}
+									className='w-full
+						 h-[217px] rounded-3xl'
+								/>
+							))}
 			</div>
 		</section>
 	)

@@ -28,7 +28,7 @@ export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className })
 				<CardDescription>Средняя на сегодня по часа</CardDescription>
 			</CardHeader>
 			<CardContent className='grid grid-cols-1 p-0 px-4 pb-4 '>
-				<ScrollArea className='w-full whitespace-nowrap'>
+				<ScrollArea   className='w-full whitespace-nowrap'>
 					<div className='flex gap-2'>
 						{isRendered
 							? new Array(24).fill(null).map((_, i) => <Skeleton key={i} className='w-20 h-36' />)

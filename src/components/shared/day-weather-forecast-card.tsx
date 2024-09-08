@@ -31,7 +31,7 @@ export const DayWeatherForecastCard: FC<Props> = ({ className, ...props }) => {
 	} = props
 
 	return (
-		<Card className={cn('rounded-3xl py-2 w-full', className)}>
+		<Card className={cn('rounded-3xl w-full', className)}>
 			<CardHeader className='p-4'>
 				<div className='flex flex-row items-center justify-between'>
 					<h2 className='text-sm font-bold'>{nameDay}</h2>

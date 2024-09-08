@@ -2,7 +2,7 @@ import { FC, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useClickAway, useDebounce } from 'react-use'
 
-import { Search, X } from 'lucide-react'
+import { LoaderPinwheel, Search, X } from 'lucide-react'
 
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
@@ -16,6 +16,7 @@ export type Props = {
 
 export const SearchInput: FC<Props> = ({ className, onClose }) => {
 	const [searchText, setSearchText] = useState('')
+	const [isLoading, setIsLoading] = useState(false)
 
 	const [focused, setFocused] = useState(false)
 	const ref = useRef(null)
@@ -24,11 +25,13 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 
 	const setUserLocality = useUserLocality((state) => state.setLocality)
 
-	const [, _] = useDebounce(
+	useDebounce(
 		async () => {
+			setIsLoading(true)
 			await searchLocality(searchText)
 				.then((data) => setLocality(data))
 				.catch((error) => toast.error(error))
+				.finally(() => setIsLoading(false))
 		},
 		500,
 		[searchText],
@@ -53,7 +56,11 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 					'flex items-center gap-3 w-96 max-md:w-full h-10 border rounded-md p-2 px-3 transition-all relative duration-200 hover:border-slate-300 dark:hover:border-slate-700 bg-slate-50 dark:bg-slate-900 pl-10'
 				}
 			>
-				<Search size={20} className='text-slate-400 absolute left-3' />
+				{isLoading ? (
+					<LoaderPinwheel size={20} className='text-slate-400 animate-spin absolute left-3' />
+				) : (
+					<Search size={20} className='text-slate-400 absolute left-3' />
+				)}
 				<input
 					value={searchText}
 					onChange={(e) => setSearchText(e.target.value)}

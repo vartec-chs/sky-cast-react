@@ -24,7 +24,7 @@ export const Header: FC = () => {
 
 	useEffect(() => {
 		if (isAutoLocality) {
-			ipLocality.getLocality()
+			// ipLocality.getLocality()
 		}
 	}, [])
 

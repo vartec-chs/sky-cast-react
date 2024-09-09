@@ -4,6 +4,7 @@ import { useClickAway, useDebounce } from 'react-use'
 
 import { LoaderPinwheel, Search, X } from 'lucide-react'
 
+import { Skeleton } from '../ui/skeleton'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
 import { searchLocality } from '@/services/searchLocality'
@@ -86,7 +87,11 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 					},
 				)}
 			>
-				{locality && locality.length ? (
+				{isLoading ? (
+					new Array(3)
+						.fill(0)
+						.map((_, index) => <Skeleton key={index} className='w-full mb-5 last:mb-0 h-8' />)
+				) : locality && locality.length ? (
 					locality.map((item, index) => (
 						<div
 							key={index}
@@ -97,7 +102,7 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 						</div>
 					))
 				) : (
-					<p className='text-md text-center'>Ничего не найдено</p>
+					<p className='text-md text-center'>Ничего не найдено 😔</p>
 				)}
 			</div>
 		</div>

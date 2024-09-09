@@ -12,11 +12,22 @@ export const useIpLocality = () => {
 		setLoading(true)
 		const response = await fetch('https://freeipapi.com/api/json')
 
+		if (!response.ok) {
+			setLoading(false)
+			return
+		}
+
 		const data = (await response.json()) as IpUserLocality
 
 		const responseLatLone = await fetch(
 			`https://nominatim.openstreetmap.org/reverse?lat=${data.latitude}&lon=${data.longitude}&format=json`,
 		)
+
+		if (!responseLatLone.ok) {
+			setLoading(false)
+			return
+		}
+
 		const dataLatLone = (await responseLatLone.json()) as LatLonUserLocality
 
 		const nameWithAddress = dataLatLone.address.state

@@ -18,13 +18,16 @@ export const OneHourWeatherForecastCard: FC<Props> = ({
 	icon,
 	precipitationProbability,
 }) => {
+
+	const isCurrent = time === 'Сейчас'
+
 	return (
 
 		<Card
 			className={cn('flex-1 rounded-2xl px-2 py-2 min-w-20 border-none shadow-none', className)}
 		>
 			<CardHeader className='px-2 py-0'>
-				<p className='text-md text-center text-muted-foreground'>{time}</p>
+				<p className={cn('text-md text-center text-muted-foreground',isCurrent && 'font-bold text-blue-500')}>{time}</p>
 			</CardHeader>
 
 			<CardContent className='flex flex-col items-center justify-center gap-2 px-2 py-0'>

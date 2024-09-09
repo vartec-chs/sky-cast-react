@@ -18,6 +18,7 @@ import {
 	SelectValue,
 } from '@/components/ui/select'
 import { useUserLocality } from '@/hooks/useUserLocality'
+import { Label } from '../ui/label'
 
 const models: { name: string; value: string }[] = [
 	{ name: 'По умолчанию', value: 'default' },
@@ -52,6 +53,8 @@ export function SettingsModal() {
 				</DialogHeader>
 				<div className='flex items-center space-x-2'>
 					<div className='grid flex-1 gap-4'>
+						<Label htmlFor='theme'>Тема</Label>
+
 						<Select value={theme} onValueChange={setTheme}>
 							<SelectTrigger>
 								<SelectValue placeholder='Тема' />
@@ -62,6 +65,8 @@ export function SettingsModal() {
 								<SelectItem value='system'>Системная</SelectItem>
 							</SelectContent>
 						</Select>
+
+						<Label htmlFor='weather-model'>Погодная модель</Label>
 
 						<Select
 							defaultValue='default'

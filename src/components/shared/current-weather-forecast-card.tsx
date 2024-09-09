@@ -39,13 +39,7 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 			: 'thermometer-warmer.svg'
 
 	return (
-		<Card className={cn('w-full relative  p-0 rounded-3xl min-h-[355px]', className)}>
-			{/* {weatherLoading ? (
-				<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-					<LoaderPinwheel className='animate-spin ' size={32} />
-				</div>
-			) : weatherForecast ? (
-				<> */}
+		<Card className={cn('w-full relative  p-0 rounded-3xl min-h-[330px]', className)}>
 			<CardHeader className='flex flex-col p-4 '>
 				<h2 className={cn('text-lg', localityNameLength > 50 && 'text-sm')}>
 					<ScrollArea className='w-full h-10'>
@@ -118,12 +112,12 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 				</div>
 			</CardContent>
 			<Separator />
-			<CardFooter className='flex flex-row gap-2 p-4 justify-between'>
+			<CardFooter className='flex flex-row gap-2 p-2 px-4 justify-between'>
 				{isRendered ? (
 					<>
-						<Skeleton className='w-24 h-10' />
-						<Skeleton className='w-24 h-10' />
-						<Skeleton className='w-24 h-10' />
+						<Skeleton className='w-24 h-8' />
+						<Skeleton className='w-24 h-8' />
+						<Skeleton className='w-24 h-8' />
 					</>
 				) : (
 					<>

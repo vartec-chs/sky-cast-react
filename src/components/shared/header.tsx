@@ -75,7 +75,6 @@ export const Header: FC = () => {
 					</Button>
 					<Button
 						className='max-md:hidden'
-						// className='xs:hidden'
 						variant='outline'
 						size='icon'
 						onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}

@@ -1,4 +1,6 @@
 import { Settings } from 'lucide-react'
+
+import { Label } from '../ui/label'
 import { useTheme } from '../ui/theme-provider'
 import { Button } from '@/components/ui/button'
 import {
@@ -17,21 +19,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
+import { weatherModels } from '@/config'
 import { useUserLocality } from '@/hooks/useUserLocality'
-import { Label } from '../ui/label'
-
-const models: { name: string; value: string }[] = [
-	{ name: 'По умолчанию', value: 'default' },
-	{ name: 'DWD Германия', value: 'icon_seamless' },
-	{ name: 'HOAA США', value: 'gfs_seamless' },
-	{ name: 'Метео-Франс', value: 'meteofrance_seamless' },
-	{ name: 'ЯМА Япония', value: 'jma_seamless' },
-	{ name: 'MET Норвегия', value: 'metno_seamless' },
-	{ name: 'GEM Канада', value: 'gem_seamless' },
-	{ name: 'CMA Китай', value: 'cma_grapes_global' },
-	{ name: 'KNMI Нидерланды', value: 'knmi_seamless' },
-	{ name: 'ECMWF', value: 'ecmwf_ifs025' },
-]
 
 export function SettingsModal() {
 	const { theme, setTheme } = useTheme()
@@ -77,7 +66,7 @@ export function SettingsModal() {
 								<SelectValue placeholder='Погодная модель' />
 							</SelectTrigger>
 							<SelectContent>
-								{models.map((model) => (
+								{weatherModels.map((model) => (
 									<SelectItem key={model.name} value={model.value}>
 										{model.name}
 									</SelectItem>

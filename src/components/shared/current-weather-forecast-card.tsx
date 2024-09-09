@@ -38,7 +38,7 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 	return (
 		<Card className={cn('w-full relative  p-0 rounded-3xl min-h-[330px]', className)}>
 			<CardHeader className='flex flex-col p-4 '>
-				<h2 className={cn('text-lg', localityNameLength > 50 && 'text-sm')}>
+				<h2 className={cn('text-lg', localityNameLength > 40 && 'text-sm')}>
 					<ScrollArea className='w-full h-10'>
 						{locality ? locality.name : <Skeleton className='w-full h-5' />}
 					</ScrollArea>

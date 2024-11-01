@@ -59,35 +59,35 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 
 			{query.isLoading ? (
 				<Skeleton className='h-[217px] rounded-3xl' />
-			) : (
-				query.data && (
-					<Card className='rounded-2xl'>
-						<CardHeader className='p-4'>
-							<h2 className='text-sm font-bold text-center flex gap-1'>
-								Усредненные погодные данные на
-								<p className='text-muted-foreground'>{dayForecast}</p>
-								{dayForecast === '3' ? 'дня' : 'дней'}
-							</h2>
-						</CardHeader>
-						<CardContent className='flex flex-col items-center gap-2 p-4 pt-0'>
+			) : query.data ? (
+				<Card className='rounded-2xl'>
+					<CardHeader className='p-4'>
+						<h2 className='flex gap-1 text-center text-sm font-bold'>
+							Усредненные погодные данные на
+							<p className='text-muted-foreground'>{dayForecast}</p>
+							{dayForecast === '3' ? 'дня' : 'дней'}
+						</h2>
+					</CardHeader>
+					<CardContent className='flex flex-col items-center gap-2 p-4 pt-0'>
+						<p className='text-sm font-bold'>
+							<span className='text-muted-foreground'>Мин:</span> {query.data?.averageMinTemp}°C /
+							<span className='text-muted-foreground'>Макс:</span> {query.data?.averageMaxTemp}°C
+						</p>
+						<div className='flex flex-row items-center justify-center gap-1'>
 							<p className='text-sm font-bold'>
-								<span className='text-muted-foreground'>Мин:</span> {query.data?.averageMinTemp}°C /
-								<span className='text-muted-foreground'>Макс:</span> {query.data?.averageMaxTemp}°C
+								<span className='text-muted-foreground'>Осадки:</span>{' '}
+								{query.data?.averagePrecipitation}%
 							</p>
-							<div className='flex flex-row items-center justify-center gap-1'>
-								<p className='text-sm font-bold'>
-									<span className='text-muted-foreground'>Осадки:</span>{' '}
-									{query.data?.averagePrecipitation}%
-								</p>
 
-								<p className='text-sm font-bold'>
-									<span className='text-muted-foreground'>Ветер:</span>{' '}
-									{query.data?.averageWindSpeed} м/с
-								</p>
-							</div>
-						</CardContent>
-					</Card>
-				)
+							<p className='text-sm font-bold'>
+								<span className='text-muted-foreground'>Ветер:</span> {query.data?.averageWindSpeed}{' '}
+								м/с
+							</p>
+						</div>
+					</CardContent>
+				</Card>
+			) : (
+				<Skeleton className='h-[130px] w-full rounded-3xl' />
 			)}
 
 			<div className='relative grid min-h-40 w-full grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-4'>

@@ -66,7 +66,7 @@ export const AverageDayForecast: FC<Props> = ({ dayForecast, data }) => {
 		return (
 			<Drawer>
 				<DrawerTrigger asChild>{openButton}</DrawerTrigger>
-				<DrawerContent>
+				<DrawerContent className='rounded-t-3xl'>
 					<DrawerHeader>
 						<DrawerTitle className='text-md flex justify-center gap-1 font-bold'>
 							{title}

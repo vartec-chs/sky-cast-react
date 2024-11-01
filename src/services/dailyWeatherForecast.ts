@@ -83,6 +83,10 @@ export const getDailyWeatherForecast = async ({
 				data.daily.wind_speed_10m_max.reduce((a, b) => a + b, 0) /
 					data.daily.wind_speed_10m_max.length,
 			),
+			averageWindDirection: Math.round(
+				data.daily.wind_direction_10m_dominant.reduce((a, b) => a + b, 0) /
+					data.daily.wind_direction_10m_dominant.length,
+			),
 		}
 
 		return responseData

@@ -17,6 +17,7 @@ export type DailyWeatherForecast = {
 	averageMaxTemp: number
 	averagePrecipitation: number
 	averageWindSpeed: number
+	averageWindDirection: number
 }
 
 export type HourWeatherForecast = {

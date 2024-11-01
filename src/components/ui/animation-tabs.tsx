@@ -70,7 +70,7 @@ export const AnimationTabs = ({
 		<div className='flex w-full flex-col items-center'>
 			<div
 				className={cn(
-					'shadow-inner-shadow flex cursor-pointer space-x-1 rounded-lg border border-zinc-200 bg-zinc-50 px-[3px] py-[3.2px] dark:border-slate-700 dark:bg-slate-800',
+					'shadow-inner-shadow flex cursor-pointer space-x-1 rounded-lg border border-zinc-200 bg-zinc-50 px-[3px] py-[3.2px] dark:border-slate-800 dark:bg-slate-900',
 					className,
 					rounded,
 				)}

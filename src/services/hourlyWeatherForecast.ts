@@ -40,6 +40,8 @@ export const getHourlyWeatherForecast = async ({
 
 				return {
 					time: currentHour === date.getHours() ? 'Сейчас' : String(date.getHours() + ':00'),
+					isCurrentTime: currentHour === date.getHours(),
+
 					temperature: data.hourly.temperature_2m[index],
 					precipitationProbability: data.hourly.precipitation_probability[index],
 					weatherCode: data.hourly.weather_code[index],
@@ -47,6 +49,7 @@ export const getHourlyWeatherForecast = async ({
 					weatherIcon: weatherData.image,
 				}
 			}),
+			isCurrentTimeItmeId: currentHour,
 		}
 
 		return responseData

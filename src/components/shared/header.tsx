@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -24,25 +25,26 @@ export const Header: FC = () => {
 
 	useEffect(() => {
 		if (isAutoLocality) {
-			ipLocality.getLocality()
+			// ipLocality.getLocality()
 		}
 	}, [])
 
 	return (
-		<header className='sticky top-0 z-50 border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b-2'>
-			<div className='container px-4 flex h-14 max-w-screen-xl items-center justify-between relative'>
-				<div
-					className={cn(
-						'w-full absolute px-4 top-[-100%] right-2 left-0 pointer-events-none transition-all duration-200 invisible opacity-0 ',
-						{
-							'opacity-100 visible top-2 pointer-events-auto': openSearch,
-						},
+		<header className='sticky top-0 z-50 border-b-2 border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
+			<div className='container relative flex h-14 max-w-screen-xl items-center justify-between px-2'>
+				<AnimatePresence>
+					{openSearch && (
+						<motion.div
+							initial={{ opacity: 0, y: -20 }}
+							animate={{ opacity: 1, y: 0 }}
+							exit={{ opacity: 0, y: -20 }}
+							transition={{ duration: 0.4, type: 'spring', ease: 'easeIn' }}
+							className='absolute left-0 right-2 top-2 w-full px-2'
+						>
+							<SearchInput onClose={() => setOpenSearch(false)} />
+						</motion.div>
 					)}
-					aria-hidden='true'
-				>
-					<SearchInput onClose={() => setOpenSearch(false)} />
-				</div>
-
+				</AnimatePresence>
 				<div className={cn('flex items-center gap-2', { hidden: openSearch })}>
 					<Logo className='h-8 w-8' />
 					<h1 className='text-2xl font-bold'>SkyCast</h1>

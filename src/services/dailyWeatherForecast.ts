@@ -65,6 +65,24 @@ export const getDailyWeatherForecast = async ({
 					windDirection: data.daily.wind_direction_10m_dominant[index],
 				}
 			}),
+
+			averageMinTemp: Math.round(
+				data.daily.temperature_2m_min.reduce((a, b) => a + b, 0) /
+					data.daily.temperature_2m_min.length,
+			),
+
+			averageMaxTemp: Math.round(
+				data.daily.temperature_2m_max.reduce((a, b) => a + b, 0) /
+					data.daily.temperature_2m_max.length,
+			),
+			averagePrecipitation: Math.round(
+				data.daily.precipitation_probability_max.reduce((a, b) => a + b, 0) /
+					data.daily.precipitation_probability_max.length,
+			),
+			averageWindSpeed: Math.round(
+				data.daily.wind_speed_10m_max.reduce((a, b) => a + b, 0) /
+					data.daily.wind_speed_10m_max.length,
+			),
 		}
 
 		return responseData

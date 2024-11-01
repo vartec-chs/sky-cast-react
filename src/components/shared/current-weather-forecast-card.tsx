@@ -1,5 +1,4 @@
 import { FC, useEffect } from 'react'
-
 import { ScrollArea } from '../ui/scroll-area'
 import { Separator } from '../ui/separator'
 import { Skeleton } from '../ui/skeleton'
@@ -36,16 +35,16 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 			: 'thermometer-warmer.svg'
 
 	return (
-		<Card className={cn('w-full relative  p-0 rounded-3xl min-h-[330px]', className)}>
-			<CardHeader className='flex flex-col p-4 '>
+		<Card className={cn('relative min-h-[330px] w-full rounded-3xl p-0', className)}>
+			<CardHeader className='flex flex-col p-4'>
 				<h2 className={cn('text-lg', localityNameLength > 40 && 'text-sm')}>
-					<ScrollArea className='w-full h-10'>
-						{locality ? locality.name : <Skeleton className='w-full h-5' />}
+					<ScrollArea className='h-10 w-full'>
+						{locality ? locality.name : <Skeleton className='h-5 w-full' />}
 					</ScrollArea>
 				</h2>
-				<div className='flex flex-row gap-1 justify-between'>
+				<div className='flex flex-row justify-between gap-1'>
 					{isRendered ? (
-						<Skeleton className='w-24 h-5' />
+						<Skeleton className='h-5 w-24' />
 					) : (
 						<p className='text-sm text-muted-foreground'>
 							Сейчас {date.toLocaleTimeString()?.slice(0, -3)}
@@ -53,7 +52,7 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 					)}
 
 					{isRendered ? (
-						<Skeleton className='w-24 h-5' />
+						<Skeleton className='h-5 w-24' />
 					) : (
 						<p className='text-sm'>{date.toLocaleDateString('ru', { weekday: 'long' })}</p>
 					)}
@@ -61,9 +60,9 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 			</CardHeader>
 			<Separator />
 			<CardContent className='flex flex-col gap-1 p-0 pb-0'>
-				<div className='flex flex-row gap-2 items-center justify-between px-4'>
+				<div className='flex flex-row items-center justify-between gap-2 px-4'>
 					{isRendered ? (
-						<Skeleton className='w-40 h-8' />
+						<Skeleton className='h-8 w-40' />
 					) : (
 						<p className='text-sm text-muted-foreground'>
 							Вчера в это время {weatherForecast?.yesterdayTemperature}°C
@@ -71,24 +70,24 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 					)}
 
 					{isRendered ? (
-						<Skeleton className='w-12 h-12 mt-1' />
+						<Skeleton className='mt-1 h-12 w-12' />
 					) : (
-						<img src={`/icons/${img}`} alt='' className='w-12 h-12' />
+						<img src={`/icons/${img}`} alt='' className='h-12 w-12' />
 					)}
 				</div>
 				<Separator className='w-full' />
-				<div className='flex flex-row gap-2 items-center justify-between px-4'>
+				<div className='flex flex-row items-center justify-between gap-2 px-4'>
 					{isRendered ? (
-						<Skeleton className='w-[120px] h-[110px] mb-1' />
+						<Skeleton className='mb-1 h-[110px] w-[120px]' />
 					) : (
-						<img src={weatherForecast?.weatherIcon} alt='weather' className='w-[120px] h-[120px]' />
+						<img src={weatherForecast?.weatherIcon} alt='weather' className='h-[120px] w-[120px]' />
 					)}
 
-					<div className='flex flex-col gap-1 items-center justify-center flex-1'>
+					<div className='flex flex-1 flex-col items-center justify-center gap-1'>
 						{isRendered ? (
 							<>
-								<Skeleton className='w-24 h-5' />
-								<Skeleton className='w-24 h-5' />
+								<Skeleton className='h-5 w-24' />
+								<Skeleton className='h-5 w-24' />
 							</>
 						) : (
 							<>
@@ -101,7 +100,7 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 
 						<Separator className='w-full' />
 						{isRendered ? (
-							<Skeleton className='w-28 h-5' />
+							<Skeleton className='h-5 w-28' />
 						) : (
 							<p className='text-sm text-muted-foreground'>{weatherForecast?.weatherDescription}</p>
 						)}
@@ -109,26 +108,26 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 				</div>
 			</CardContent>
 			<Separator />
-			<CardFooter className='flex flex-row gap-2 p-2 px-4 justify-between'>
+			<CardFooter className='flex flex-row justify-between gap-2 p-2 px-4'>
 				{isRendered ? (
 					<>
-						<Skeleton className='w-24 h-8' />
-						<Skeleton className='w-24 h-8' />
-						<Skeleton className='w-24 h-8' />
+						<Skeleton className='h-8 w-24' />
+						<Skeleton className='h-8 w-24' />
+						<Skeleton className='h-8 w-24' />
 					</>
 				) : (
 					<>
 						<div className='flex flex-row items-center gap-2'>
 							<img src='/icons/wind.svg' alt='Logo' width={42} height={42} />
-							<p className='text-sm text-muted-foreground '>{weatherForecast?.windSpeed} м/с</p>
+							<p className='text-sm text-muted-foreground'>{weatherForecast?.windSpeed} м/с</p>
 						</div>
 						<div className='flex flex-row items-center gap-2'>
 							<img src='/icons/humidity.svg' alt='Logo' width={42} height={42} />
-							<p className='text-sm text-muted-foreground '>{weatherForecast?.relativeHumidity}%</p>
+							<p className='text-sm text-muted-foreground'>{weatherForecast?.relativeHumidity}%</p>
 						</div>
 						<div className='flex flex-row items-center gap-2'>
 							<img src='/icons/compass.svg' alt='Logo' width={42} height={42} />
-							<p className='text-sm text-muted-foreground '>
+							<p className='text-sm text-muted-foreground'>
 								{weatherForecast && getWindDirection(weatherForecast.windDirection)}
 							</p>
 						</div>

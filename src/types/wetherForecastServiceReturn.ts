@@ -13,9 +13,14 @@ export type DayWeatherForecast = {
 
 export type DailyWeatherForecast = {
 	daily: DayWeatherForecast[]
+	averageMinTemp: number
+	averageMaxTemp: number
+	averagePrecipitation: number
+	averageWindSpeed: number
 }
 
 export type HourWeatherForecast = {
+	isCurrentTime: boolean
 	time: string
 	temperature: number
 	precipitationProbability: number
@@ -26,6 +31,7 @@ export type HourWeatherForecast = {
 
 export type HourlyWeatherForecast = {
 	hourly: HourWeatherForecast[]
+	isCurrentTimeItmeId: number
 }
 
 export type CurrentWeatherForecast = {

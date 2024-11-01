@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useRef } from 'react'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { ScrollArea, ScrollBar } from '../ui/scroll-area'
@@ -13,6 +13,17 @@ export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className })
 	const [locality, weatherModel] = useUserLocality((state) => [state.locality, state.weatherModel])
 	const { getWeatherForecast, weatherLoading, weatherForecast } = useHourlyWeatherForecast()
 
+	const scrollRef = useRef<HTMLDivElement | null>(null)
+
+	useEffect(() => {
+		const currentItemId = weatherForecast?.isCurrentTimeItmeId
+		if (scrollRef.current) {
+			if (currentItemId) {
+				scrollRef.current.scrollTo({ left: currentItemId * 80 })
+			}
+		}
+	}, [weatherForecast])
+
 	const isRendered = !(!weatherLoading && Boolean(weatherForecast))
 
 	useEffect(() => {
@@ -22,16 +33,16 @@ export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className })
 	}, [locality])
 
 	return (
-		<Card className={cn('rounded-3xl relative p-0 w-full min-h-[240px]', className)}>
+		<Card className={cn('relative min-h-[240px] w-full rounded-3xl p-0', className)}>
 			<CardHeader className='p-4'>
 				<CardTitle>Температура</CardTitle>
 				<CardDescription>Средняя на сегодня по часа</CardDescription>
 			</CardHeader>
-			<CardContent className='grid grid-cols-1 p-0 px-4 pb-4 '>
-				<ScrollArea   className='w-full whitespace-nowrap'>
+			<CardContent className='grid grid-cols-1 p-0 px-4 pb-4'>
+				<ScrollArea ref={scrollRef} className='w-full whitespace-nowrap'>
 					<div className='flex gap-2'>
 						{isRendered
-							? new Array(24).fill(null).map((_, i) => <Skeleton key={i} className='w-20 h-36' />)
+							? new Array(24).fill(null).map((_, i) => <Skeleton key={i} className='h-36 w-20' />)
 							: weatherForecast &&
 								weatherForecast.hourly.map((item, i) => (
 									<OneHourWeatherForecastCard

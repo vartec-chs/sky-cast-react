@@ -6,7 +6,6 @@ import { useClickAway, useDebounce } from 'react-use'
 import { LoaderPinwheel, Search, Star, X } from 'lucide-react'
 
 import { Button } from '../ui/button'
-import { ScrollArea } from '../ui/scroll-area'
 import { Separator } from '../ui/separator'
 import { Skeleton } from '../ui/skeleton'
 import { useUserLocality } from '@/hooks/useUserLocality'
@@ -100,9 +99,9 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: 50 }}
 						transition={{ duration: 0.4, type: 'spring', ease: 'easeIn' }}
-						className='absolute left-0 top-12 w-full rounded-lg border bg-slate-50 p-2 dark:bg-slate-900'
+						className='absolute left-0 top-12 w-full rounded-lg border bg-slate-50 p-2 dark:bg-slate-900 overflow-y-auto max-h-[50dvh] scrollbar-thin dark:scrollbar-thumb-slate-800 dark:scrollbar-track-slate-950'
 					>
-						<ScrollArea className='h-80'>
+					
 							{isLoading ? (
 								new Array(3)
 									.fill(0)
@@ -163,7 +162,7 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 							) : (
 								<p className='text-md text-center'>Пожалуйста, добавьте город в избранное 🙂</p>
 							)}
-						</ScrollArea>
+					
 					</motion.div>
 				)}
 			</AnimatePresence>

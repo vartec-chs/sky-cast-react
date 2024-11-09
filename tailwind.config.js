@@ -76,21 +76,19 @@ module.exports = {
 					'100%': {
 						transform: 'scale(1)',
 					},
-					
 				},
 				'border-success': {
 					'0%': {
 						'--tw-border-opacity': '1',
 						// 'border-color': 'hsl(var(--success) / var(--tw-border-opacity))',
-						"background-color": 'rgb(0, 128, 0, 0)',
+						'background-color': 'rgb(0, 128, 0, 0)',
 					},
 					'100%': {
 						'--tw-border-opacity': '1',
 						// 'border-color': 'green',
-						"background-color": 'rgb(0, 128, 0, 0.2)',
+						'background-color': 'rgb(0, 128, 0, 0.2)',
 					},
-
-				}
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -100,5 +98,5 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require('tailwindcss-animate')],
+	plugins: [require('tailwindcss-animate'), require('tailwind-scrollbar')],
 }

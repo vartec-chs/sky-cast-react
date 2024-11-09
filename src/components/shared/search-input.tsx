@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils'
 import { searchLocality } from '@/services/searchLocality'
 import { SecrchLocality } from '@/types/locality'
 import { PropsWithClassName } from '@/types/other'
+import { ScrollArea } from '../ui/scroll-area'
 
 export type Props = {
 	onClose?: () => void
@@ -101,6 +102,7 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 						transition={{ duration: 0.4, type: 'spring', ease: 'easeIn' }}
 						className='absolute left-0 top-12 w-full rounded-lg border bg-slate-50 p-2 dark:bg-slate-900'
 					>
+						<ScrollArea className={cn('h-6', searchText && 'h-80')}>
 						{isLoading ? (
 							new Array(3)
 								.fill(0)
@@ -161,6 +163,7 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 						) : (
 							<p className='text-md text-center'>Пожалуйста, добавьте город в избранное 🙂</p>
 						)}
+						</ScrollArea>
 					</motion.div>
 				)}
 			</AnimatePresence>

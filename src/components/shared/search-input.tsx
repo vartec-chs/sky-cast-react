@@ -6,6 +6,7 @@ import { useClickAway, useDebounce } from 'react-use'
 import { LoaderPinwheel, Search, Star, X } from 'lucide-react'
 
 import { Button } from '../ui/button'
+import { ScrollArea } from '../ui/scroll-area'
 import { Separator } from '../ui/separator'
 import { Skeleton } from '../ui/skeleton'
 import { useUserLocality } from '@/hooks/useUserLocality'
@@ -13,7 +14,6 @@ import { cn } from '@/lib/utils'
 import { searchLocality } from '@/services/searchLocality'
 import { SecrchLocality } from '@/types/locality'
 import { PropsWithClassName } from '@/types/other'
-import { ScrollArea } from '../ui/scroll-area'
 
 export type Props = {
 	onClose?: () => void
@@ -102,67 +102,67 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 						transition={{ duration: 0.4, type: 'spring', ease: 'easeIn' }}
 						className='absolute left-0 top-12 w-full rounded-lg border bg-slate-50 p-2 dark:bg-slate-900'
 					>
-						<ScrollArea className={cn('h-6', searchText && 'h-80')}>
-						{isLoading ? (
-							new Array(3)
-								.fill(0)
-								.map((_, index) => <Skeleton key={index} className='mb-5 h-8 w-full last:mb-0' />)
-						) : locality && locality.length ? (
-							locality.map((item, index) => (
+						<ScrollArea className='h-80'>
+							{isLoading ? (
+								new Array(3)
+									.fill(0)
+									.map((_, index) => <Skeleton key={index} className='mb-5 h-8 w-full last:mb-0' />)
+							) : locality && locality.length ? (
+								locality.map((item, index) => (
+									<div
+										key={index}
+										className={
+											'flex cursor-pointer flex-col gap-2 rounded-md border-sky-500 p-2 transition-all duration-200 hover:bg-slate-200 hover:text-sky-500 dark:hover:bg-slate-800'
+										}
+										onClick={() =>
+											onSelect({ lat: item.lat, lon: item.lon, display_name: item.display_name })
+										}
+									>
+										<div className='flex flex-row items-center justify-between'>
+											<p className='text-md'>{item.display_name}</p>
+											<Button
+												onClick={() => onClickAddFavorite(item)}
+												variant='ghost'
+												size='icon'
+												className='ml-2 hover:text-yellow-500'
+											>
+												<Star size={20} />
+											</Button>
+										</div>
+
+										{locality.length - 1 !== index && <Separator />}
+									</div>
+								))
+							) : searchText ? (
+								<p className='text-md text-center'>Ничего не найдено 😔</p>
+							) : localStorageFavorite ? (
 								<div
-									key={index}
 									className={
 										'flex cursor-pointer flex-col gap-2 rounded-md border-sky-500 p-2 transition-all duration-200 hover:bg-slate-200 hover:text-sky-500 dark:hover:bg-slate-800'
 									}
 									onClick={() =>
-										onSelect({ lat: item.lat, lon: item.lon, display_name: item.display_name })
+										onSelect({
+											lat: localStorageFavorite.lat,
+											lon: localStorageFavorite.lon,
+											display_name: localStorageFavorite.name,
+										})
 									}
 								>
 									<div className='flex flex-row items-center justify-between'>
-										<p className='text-md'>{item.display_name}</p>
+										<p className='text-md'>{localStorageFavorite.name}</p>
 										<Button
-											onClick={() => onClickAddFavorite(item)}
+											onClick={() => onClickRemoveFavorite()}
 											variant='ghost'
 											size='icon'
-											className='ml-2 hover:text-yellow-500'
+											className='ml-2 text-yellow-500'
 										>
 											<Star size={20} />
 										</Button>
 									</div>
-
-									{locality.length - 1 !== index && <Separator />}
 								</div>
-							))
-						) : searchText ? (
-							<p className='text-md text-center'>Ничего не найдено 😔</p>
-						) : localStorageFavorite ? (
-							<div
-								className={
-									'flex cursor-pointer flex-col gap-2 rounded-md border-sky-500 p-2 transition-all duration-200 hover:bg-slate-200 hover:text-sky-500 dark:hover:bg-slate-800'
-								}
-								onClick={() =>
-									onSelect({
-										lat: localStorageFavorite.lat,
-										lon: localStorageFavorite.lon,
-										display_name: localStorageFavorite.name,
-									})
-								}
-							>
-								<div className='flex flex-row items-center justify-between'>
-									<p className='text-md'>{localStorageFavorite.name}</p>
-									<Button
-										onClick={() => onClickRemoveFavorite()}
-										variant='ghost'
-										size='icon'
-										className='ml-2 text-yellow-500'
-									>
-										<Star size={20} />
-									</Button>
-								</div>
-							</div>
-						) : (
-							<p className='text-md text-center'>Пожалуйста, добавьте город в избранное 🙂</p>
-						)}
+							) : (
+								<p className='text-md text-center'>Пожалуйста, добавьте город в избранное 🙂</p>
+							)}
 						</ScrollArea>
 					</motion.div>
 				)}

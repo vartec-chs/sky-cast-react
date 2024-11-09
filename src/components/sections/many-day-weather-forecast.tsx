@@ -58,7 +58,7 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 				/>
 
 				{query.isLoading ? (
-					<Skeleton className='h-10 w-20 rounded-lg' />
+					<Skeleton className='h-10 w-10 rounded-lg' />
 				) : query.data ? (
 					<AverageDayForecast dayForecast={dayForecast} data={query.data} />
 				) : (

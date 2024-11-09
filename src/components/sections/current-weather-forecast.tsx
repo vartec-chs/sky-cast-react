@@ -7,7 +7,7 @@ import { PropsWithClassName } from '@/types/other'
 
 export const CurrentWeatherForecastSection: FC<PropsWithClassName> = ({ className }) => {
 	return (
-		<section className={cn('w-full flex flex-row max-md:flex-col items-start gap-8', className)}>
+		<section className={cn('w-full flex flex-row max-md:flex-col items-start gap-4', className)}>
 			<CurrentWeatherForecastCard className='flex-[0_0_35%]' />
 			<HourlyWeatherForecastCard />
 		</section>

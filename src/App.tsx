@@ -7,7 +7,7 @@ function App() {
 	return (
 		<>
 			<Header />
-			<main className='container px-2 mt-8 max-w-screen-xl flex flex-col gap-16 mb-16'>
+			<main className='container px-2 mt-4 max-w-screen-xl flex flex-col gap-8 mb-16'>
 				<CurrentWeatherForecastSection />
 				<ManyDayWeatherForecastSection />
 			</main>

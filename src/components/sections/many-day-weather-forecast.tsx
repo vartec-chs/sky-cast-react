@@ -29,7 +29,7 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 	})
 
 	return (
-		<section className={cn('flex w-full flex-col items-center gap-8', className)}>
+		<section className={cn('flex w-full flex-col items-center gap-4', className)}>
 			<h1 className='text-2xl font-bold'>
 				Прогноз погоды на {dayForecast} {dayForecast === '3' ? 'дня' : 'дней'}
 			</h1>

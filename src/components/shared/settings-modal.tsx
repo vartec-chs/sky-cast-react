@@ -40,7 +40,6 @@ export function SettingsModal() {
 
 	const isMobile = useMedia('(max-width: 768px)')
 
-
 	if (isMobile) {
 		return (
 			<Drawer>
@@ -49,7 +48,7 @@ export function SettingsModal() {
 						<Settings size={16} />
 					</Button>
 				</DrawerTrigger>
-				<DrawerContent className='rounded-t-3xl sm:max-w-[425px]'>
+				<DrawerContent className='rounded-t-3xl border-none sm:max-w-[425px]'>
 					<DrawerHeader>
 						<DrawerTitle>Настройки</DrawerTitle>
 					</DrawerHeader>
@@ -68,21 +67,21 @@ export function SettingsModal() {
 							</Select>
 							<Label htmlFor='weather-model'>Погодная модель</Label>
 							<Select
-							defaultValue='default'
-							value={weatherModel}
-							onValueChange={(value) => setWeatherModel(value)}
-						>
-							<SelectTrigger>
-								<SelectValue placeholder='Погодная модель' />
-							</SelectTrigger>
-							<SelectContent>
-								{weatherModels.map((model) => (
-									<SelectItem key={model.name} value={model.value}>
-										{model.name}
-									</SelectItem>
-								))}
-							</SelectContent>
-						</Select>
+								defaultValue='default'
+								value={weatherModel}
+								onValueChange={(value) => setWeatherModel(value)}
+							>
+								<SelectTrigger>
+									<SelectValue placeholder='Погодная модель' />
+								</SelectTrigger>
+								<SelectContent>
+									{weatherModels.map((model) => (
+										<SelectItem key={model.name} value={model.value}>
+											{model.name}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
 						</div>
 					</div>
 					<DialogFooter className='p-4'>

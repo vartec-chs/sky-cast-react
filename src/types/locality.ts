@@ -20,13 +20,11 @@ export interface IpUserLocality {
 	// cityName: string
 	// latitude: string
 	// longitude: string
-	country: string
-	countryCode: string
+	country_name: string
 	region: string
-	regionName: string
 	city: string
-	lat: number
-	lon: number
+	latitude: number
+	longitude: number
 }
 
 export interface LatLonUserLocality {

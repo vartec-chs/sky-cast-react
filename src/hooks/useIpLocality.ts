@@ -11,7 +11,7 @@ export const useIpLocality = () => {
 	async function getLocality() {
 		setLoading(true)
 		// const response = await fetch('https://freeipapi.com/api/json')
-		const response = await fetch('http://ip-api.com/json')
+		const response = await fetch('https://ipapi.co/json')
 
 		if (!response.ok) {
 			setLoading(false)
@@ -23,7 +23,7 @@ export const useIpLocality = () => {
 		console.log('data ip', data)
 
 		const responseLatLone = await fetch(
-			`https://nominatim.openstreetmap.org/reverse?lat=${data.lat}&lon=${data.lon}&format=json`,
+			`https://nominatim.openstreetmap.org/reverse?lat=${data.latitude}&lon=${data.longitude}&format=json`,
 		)
 
 		console.log('responseLatLone', responseLatLone)
@@ -41,8 +41,8 @@ export const useIpLocality = () => {
 
 		setLocality(data)
 		setUserLocality({
-			lat: String(data.lat),
-			lon: String(data.lon),
+			lat: String(data.latitude),
+			lon: String(data.longitude),
 			name: nameWithAddress,
 		})
 		setLoading(false)

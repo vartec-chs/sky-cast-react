@@ -24,7 +24,7 @@ export const Header: FC = () => {
 		onError: (error) => toast.error('Ошибка получения геолокации: ' + error),
 	})
 	const ipLocality = useIpLocality({
-		onError: (error) => toast.error('Ошибка получения IP-геолокации: ' + error.message),
+		onError: (_) => {},
 	})
 
 	useEffect(() => {

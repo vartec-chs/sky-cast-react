@@ -59,6 +59,8 @@ export const useIpLocality = ({ onError }: { onError: (error: Error) => void }) 
 					lon: localStorageFavorite.lon,
 					name: localStorageFavorite.name,
 				})
+			} else {
+				setUserLocality({ lat: '55.751244', lon: '37.618423', name: 'Москва' })
 			}
 			if (error instanceof Error) onError(error)
 		} finally {

@@ -1,6 +1,6 @@
 {
 	"theme_color": "#000000",
-	"background_color": "#1a1a1a",
+	"background_color": "#000000",
 	"icons": [
 		{
 			"purpose": "maskable",
@@ -10,11 +10,11 @@
 		},
 		{ "purpose": "any", "sizes": "512x512", "src": "icon512_rounded.png", "type": "image/png" }
 	],
-	"orientation": "portrait-primary",
+	"orientation": "portrait",
 	"display": "standalone",
 	"dir": "auto",
 	"lang": "ru",
 	"name": "SkyCast",
 	"short_name": "SkyCast",
-	"start_url": "./"
+	"description": "Прогноз погоды с точностью до часа и возможностью просмотра прогноза на 16 дней вперед."
 }

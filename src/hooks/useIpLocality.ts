@@ -51,6 +51,15 @@ export const useIpLocality = ({ onError }: { onError: (error: Error) => void }) 
 			})
 		} catch (error) {
 			console.log(error)
+			const localStorageFavoriteS = window.localStorage.getItem('favoriteLocality')
+			if (localStorageFavoriteS) {
+				const localStorageFavorite = JSON.parse(localStorageFavoriteS)
+				setUserLocality({
+					lat: localStorageFavorite.lat,
+					lon: localStorageFavorite.lon,
+					name: localStorageFavorite.name,
+				})
+			}
 			if (error instanceof Error) onError(error)
 		} finally {
 			setLoading(false)

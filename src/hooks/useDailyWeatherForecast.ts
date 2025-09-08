@@ -1,12 +1,22 @@
 import { useState } from 'react'
+import { useQuery, useQueryClient } from 'react-query'
 
 import { getDailyWeatherForecast } from '@/services/dailyWeatherForecast'
 import { WeatherServiceArgs } from '@/types/other'
 import { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
 export const useDailyWeatherForecast = () => {
-	const [weatherForecast, setWeatherForecast] = useState<DailyWeatherForecast>()
-	const [loading, setLoading] = useState(false)
+	const [params, setParams] = useState<(WeatherServiceArgs & { days: number }) | null>(null)
+	const queryClient = useQueryClient()
+
+	const query = useQuery<DailyWeatherForecast | undefined, Error>(
+		['dailyWeatherForecast', params],
+		async () => {
+			if (!params) return undefined
+			return getDailyWeatherForecast(params)
+		},
+		{ enabled: !!params },
+	)
 
 	async function getWeatherForecast({
 		lat,
@@ -14,18 +24,23 @@ export const useDailyWeatherForecast = () => {
 		days,
 		weatherModel,
 	}: WeatherServiceArgs & { days: number }) {
-		setLoading(true)
-		await getDailyWeatherForecast({ lat, lon, days, weatherModel })
-			.then((data) => {
-				setWeatherForecast(data)
-			})
-			.catch((error) => {
-				console.log(error)
-			})
-			.finally(() => {
-				setLoading(false)
-			})
+		const newParams = { lat, lon, days, weatherModel }
+		setParams(newParams)
+
+		try {
+			const data = await queryClient.fetchQuery(['dailyWeatherForecast', newParams], () =>
+				getDailyWeatherForecast(newParams),
+			)
+			return data
+		} catch (error) {
+			console.log(error)
+			throw error
+		}
 	}
 
-	return { weatherForecast, weatherLoading: loading, getWeatherForecast }
+	return {
+		weatherForecast: query.data,
+		weatherLoading: query.isLoading || query.isFetching,
+		getWeatherForecast,
+	}
 }

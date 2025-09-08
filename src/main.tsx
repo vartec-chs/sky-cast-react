@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 	<ThemeProvider defaultTheme='light' storageKey='vite-ui-theme'>
 		<Toaster
 			toastOptions={{
-				className: ' text-black dark:text-white bg-muted rounded-lg shadow-md max-md:w-full',
+				className: 'text-black dark:text-white bg-muted rounded-lg shadow-md max-md:w-full',
 			}}
 		/>
 		<QueryClientProvider client={queryClient}>

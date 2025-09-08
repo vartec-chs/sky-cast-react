@@ -20,14 +20,13 @@ export const useIpLocality = () => {
 
 		const data = (await response.json()) as IpUserLocality
 
-		console.log('data ip', data)
+
 
 		const responseLatLone = await fetch(
 			`https://nominatim.openstreetmap.org/reverse?lat=${data.latitude}&lon=${data.longitude}&format=json`,
 		)
 
-		console.log('responseLatLone', responseLatLone)
-
+		
 		if (!responseLatLone.ok) {
 			setLoading(false)
 			return

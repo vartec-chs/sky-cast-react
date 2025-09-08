@@ -82,7 +82,7 @@ export const AverageDayForecast: FC<Props> = ({ dayForecast, data }) => {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>{openButton}</DialogTrigger>
-			<DialogContent>
+			<DialogContent className='max-w-md rounded-2xl p-4 sm:p-6 lg:p-8'>
 				<DialogHeader>
 					<DialogTitle className='flex gap-1 text-center text-lg font-bold'>
 						{title}

@@ -12,7 +12,6 @@ import { SettingsModal } from './settings-modal'
 import { useGeolocation } from '@/hooks/useGeolacation'
 import { useIpLocality } from '@/hooks/useIpLocality'
 import { useUserLocality } from '@/hooks/useUserLocality'
-
 import { cn } from '@/lib/utils'
 
 export const Header: FC = () => {
@@ -21,8 +20,12 @@ export const Header: FC = () => {
 
 	const isAutoLocality = useUserLocality((state) => state.isAutoLocality)
 
-	const geolocation = useGeolocation({ onError: (error) => toast.error(error) })
-	const ipLocality = useIpLocality()
+	const geolocation = useGeolocation({
+		onError: (error) => toast.error('Ошибка получения геолокации: ' + error),
+	})
+	const ipLocality = useIpLocality({
+		onError: (error) => toast.error('Ошибка получения IP-геолокации: ' + error.message),
+	})
 
 	useEffect(() => {
 		if (isAutoLocality) {

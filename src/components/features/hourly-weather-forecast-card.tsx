@@ -10,7 +10,6 @@ import { cn } from '@/lib/utils'
 import { PropsWithClassName } from '@/types/other'
 
 export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className }) => {
-	// const [locality, weatherModel] = useUserLocality((state) => [state.locality, state.weatherModel])
 	const locality = useUserLocality((state) => state.locality)
 	const weatherModel = useUserLocality((state) => state.weatherModel)
 	const { getWeatherForecast, weatherLoading, weatherForecast } = useHourlyWeatherForecast()
@@ -19,6 +18,7 @@ export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className })
 
 	useEffect(() => {
 		const currentItemId = weatherForecast?.isCurrentTimeItmeId
+		console.log(currentItemId)
 		if (scrollRef.current) {
 			if (currentItemId) {
 				scrollRef.current.scrollTo({ left: currentItemId * 80 })

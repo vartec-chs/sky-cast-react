@@ -28,6 +28,7 @@ type Props = {
 const title = 'Усредненные погодные данные на'
 
 export const AverageDayForecast: FC<Props> = ({ dayForecast, data }) => {
+
 	const isMobile = useMedia('(max-width: 768px)')
 
 	const openButton = (

@@ -18,12 +18,12 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 	const [dayForecast, setDayForecast] = useState('3')
 
 	const query = useQuery<DailyWeatherForecast, Error>({
-		queryKey: ['daily-weather-forecast', locality?.lat, locality?.lon, dayForecast, weatherModel],
+		queryKey: ['daily-weather-forecast', locality?.lat, locality?.lon, weatherModel],
 		queryFn: () =>
 			getDailyWeatherForecast({
 				lat: Number(locality?.lat),
 				lon: Number(locality?.lon),
-				days: Number(dayForecast),
+				days: Number(16),
 				weatherModel,
 			}),
 		enabled: !!locality,
@@ -61,7 +61,7 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 				{query.isLoading ? (
 					<Skeleton className='h-10 w-10 rounded-lg' />
 				) : query.data ? (
-					<AverageDayForecast dayForecast={dayForecast} data={query.data} />
+					<AverageDayForecast dayForecast={'16'} data={query.data} />
 				) : (
 					<Skeleton className='h-10 w-10 rounded-md' />
 				)}
@@ -73,7 +73,9 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 							.fill(null)
 							.map((_, i) => <Skeleton key={i} className='h-[217px] w-full rounded-3xl' />)
 					: query.data
-						? query.data.daily.map((item, i) => <DayWeatherForecastCard key={i} {...item} />)
+						? query.data.daily
+								.slice(0, Number(dayForecast))
+								.map((item, i) => <DayWeatherForecastCard key={i} {...item} />)
 						: new Array(Number(dayForecast))
 								.fill(null)
 								.map((_, i) => <Skeleton key={i} className='h-[217px] w-full rounded-3xl' />)}

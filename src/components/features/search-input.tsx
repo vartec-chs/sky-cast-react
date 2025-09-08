@@ -32,6 +32,11 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 	useDebounce(
 		async () => {
 			setIsLoading(true)
+			if (!searchText) {
+				setLocality([])
+				setIsLoading(false)
+				return
+			}
 			await searchLocality(searchText)
 				.then((data) => setLocality(data))
 				.catch((error) => toast.error(error))

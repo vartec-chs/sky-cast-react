@@ -1,294 +1,292 @@
-
-
-interface WeatherDescription {
-	description: string;
-	image: string;
+export interface WeatherDescription {
+	description: string
+	image: string
 }
 
 const weatherCode: { [key: string]: { day: WeatherDescription; night: WeatherDescription } } = {
-	"0": {
+	'0': {
 		day: {
-			description: "Солнечно",
-			image: "/icons/clear-day.svg"
+			description: 'Солнечно',
+			image: '/icons/clear-day.svg',
 		},
 		night: {
-			description: "Ясно",
-			image: "/icons/clear-night.svg"
-		}
+			description: 'Ясно',
+			image: '/icons/clear-night.svg',
+		},
 	},
-	"1": {
+	'1': {
 		day: {
-			description: "В основном солнечно",
-			image: "/icons/clear-day.svg"
+			description: 'В основном солнечно',
+			image: '/icons/clear-day.svg',
 		},
 		night: {
-			description: "В основном ясно",
-			image: "/icons/clear-night.svg"
-		}
+			description: 'В основном ясно',
+			image: '/icons/clear-night.svg',
+		},
 	},
-	"2": {
+	'2': {
 		day: {
-			description: "Переменная облачность",
-			image: "/icons/partly-cloudy-day.svg"
+			description: 'Переменная облачность',
+			image: '/icons/partly-cloudy-day.svg',
 		},
 		night: {
-			description: "Переменная облачность",
-			image: "/icons/partly-cloudy-night.svg"
-		}
+			description: 'Переменная облачность',
+			image: '/icons/partly-cloudy-night.svg',
+		},
 	},
-	"3": {
+	'3': {
 		day: {
-			description: "Облачно",
-			image: "/icons/cloudy.svg"
+			description: 'Облачно',
+			image: '/icons/cloudy.svg',
 		},
 		night: {
-			description: "Облачно",
-			image: "/icons/cloudy.svg"
-		}
+			description: 'Облачно',
+			image: '/icons/cloudy.svg',
+		},
 	},
-	"45": {
+	'45': {
 		day: {
-			description: "Туманно",
-			image: "/icons/mist.svg"
+			description: 'Туманно',
+			image: '/icons/mist.svg',
 		},
 		night: {
-			description: "Туманно",
-			image: "/icons/mist.svg"
-		}
+			description: 'Туманно',
+			image: '/icons/mist.svg',
+		},
 	},
-	"48": {
+	'48': {
 		day: {
-			description: "Изморозь",
-			image: "/icons/snowflake.svg"
+			description: 'Изморозь',
+			image: '/icons/snowflake.svg',
 		},
 		night: {
-			description: "Изморозь",
-			image: "/icons/snowflake.svg"
-		}
+			description: 'Изморозь',
+			image: '/icons/snowflake.svg',
+		},
 	},
-	"51": {
+	'51': {
 		day: {
-			description: "Легкий моросящий дождь",
-			image: "/icons/partly-cloudy-day-drizzle.svg"
+			description: 'Легкий моросящий дождь',
+			image: '/icons/partly-cloudy-day-drizzle.svg',
 		},
 		night: {
-			description: "Легкий моросящий дождь",
-			image: "/icons/partly-cloudy-night-drizzle.svg"
-		}
+			description: 'Легкий моросящий дождь',
+			image: '/icons/partly-cloudy-night-drizzle.svg',
+		},
 	},
-	"53": {
+	'53': {
 		day: {
-			description: "Моросящий дождь",
-			image: "/icons/partly-cloudy-day-drizzle.svg"
+			description: 'Моросящий дождь',
+			image: '/icons/partly-cloudy-day-drizzle.svg',
 		},
 		night: {
-			description: "Моросящий дождь",
-			image: "/icons/partly-cloudy-night-drizzle.svg"
-		}
+			description: 'Моросящий дождь',
+			image: '/icons/partly-cloudy-night-drizzle.svg',
+		},
 	},
-	"55": {
+	'55': {
 		day: {
-			description: "Сильный моросящий дождь",
-			image: "/icons/partly-cloudy-day-drizzle.svg"
+			description: 'Сильный моросящий дождь',
+			image: '/icons/partly-cloudy-day-drizzle.svg',
 		},
 		night: {
-			description: "Сильный моросящий дождь",
-			image: "/icons/partly-cloudy-night-drizzle.svg"
-		}
+			description: 'Сильный моросящий дождь',
+			image: '/icons/partly-cloudy-night-drizzle.svg',
+		},
 	},
-	"56": {
+	'56': {
 		day: {
-			description: "Легкий замерзающий моросящий дождь",
-			image: "/icons/partly-cloudy-day-sleet.svg"
+			description: 'Легкий замерзающий моросящий дождь',
+			image: '/icons/partly-cloudy-day-sleet.svg',
 		},
 		night: {
-			description: "Легкий замерзающий моросящий дождь",
-			image: "/icons/partly-cloudy-night-sleet.svg"
-		}
+			description: 'Легкий замерзающий моросящий дождь',
+			image: '/icons/partly-cloudy-night-sleet.svg',
+		},
 	},
-	"57": {
+	'57': {
 		day: {
-			description: "Замерзающий моросящий дождь",
-			image: "/icons/partly-cloudy-day-sleet.svg"
+			description: 'Замерзающий моросящий дождь',
+			image: '/icons/partly-cloudy-day-sleet.svg',
 		},
 		night: {
-			description: "Замерзающий моросящий дождь",
-			image: "/icons/partly-cloudy-night-sleet.svg"
-		}
+			description: 'Замерзающий моросящий дождь',
+			image: '/icons/partly-cloudy-night-sleet.svg',
+		},
 	},
-	"61": {
+	'61': {
 		day: {
-			description: "Легкий дождь",
-			image: "/icons/partly-cloudy-day-rain.svg"
+			description: 'Легкий дождь',
+			image: '/icons/partly-cloudy-day-rain.svg',
 		},
 		night: {
-			description: "Легкий дождь",
-			image: "/icons/partly-cloudy-night-rain.svg"
-		}
+			description: 'Легкий дождь',
+			image: '/icons/partly-cloudy-night-rain.svg',
+		},
 	},
-	"63": {
+	'63': {
 		day: {
-			description: "Дождь",
-			image: "/icons/partly-cloudy-day-rain.svg"
+			description: 'Дождь',
+			image: '/icons/partly-cloudy-day-rain.svg',
 		},
 		night: {
-			description: "Дождь",
-			image: "/icons/partly-cloudy-night-rain.svg"
-		}
+			description: 'Дождь',
+			image: '/icons/partly-cloudy-night-rain.svg',
+		},
 	},
-	"65": {
+	'65': {
 		day: {
-			description: "Сильный дождь",
-			image: "/icons/partly-cloudy-day-rain.svg"
+			description: 'Сильный дождь',
+			image: '/icons/partly-cloudy-day-rain.svg',
 		},
 		night: {
-			description: "Сильный дождь",
-			image: "/icons/partly-cloudy-night-rain.svg"
-		}
+			description: 'Сильный дождь',
+			image: '/icons/partly-cloudy-night-rain.svg',
+		},
 	},
-	"66": {
+	'66': {
 		day: {
-			description: "Легкий замерзающий дождь",
-			image: "/icons/rain.svg"
+			description: 'Легкий замерзающий дождь',
+			image: '/icons/rain.svg',
 		},
 		night: {
-			description: "Легкий замерзающий дождь",
-			image: "/icons/rain.svg"
-		}
+			description: 'Легкий замерзающий дождь',
+			image: '/icons/rain.svg',
+		},
 	},
-	"67": {
+	'67': {
 		day: {
-			description: "Замерзающий дождь",
-			image: "/icons/rain.svg"
+			description: 'Замерзающий дождь',
+			image: '/icons/rain.svg',
 		},
 		night: {
-			description: "Замерзающий дождь",
-			image: "/icons/rain.svg"
-		}
+			description: 'Замерзающий дождь',
+			image: '/icons/rain.svg',
+		},
 	},
-	"71": {
+	'71': {
 		day: {
-			description: "Легкий снег",
-			image: "/icons/partly-cloudy-day-snow.svg"
+			description: 'Легкий снег',
+			image: '/icons/partly-cloudy-day-snow.svg',
 		},
 		night: {
-			description: "Легкий снег",
-			image: "/icons/partly-cloudy-night-snow.svg"
-		}
+			description: 'Легкий снег',
+			image: '/icons/partly-cloudy-night-snow.svg',
+		},
 	},
-	"73": {
+	'73': {
 		day: {
-			description: "Снег",
-			image: "/icons/partly-cloudy-day-snow.svg"
+			description: 'Снег',
+			image: '/icons/partly-cloudy-day-snow.svg',
 		},
 		night: {
-			description: "Снег",
-			image: "/icons/partly-cloudy-night-snow.svg"
-		}
+			description: 'Снег',
+			image: '/icons/partly-cloudy-night-snow.svg',
+		},
 	},
-	"75": {
+	'75': {
 		day: {
-			description: "Сильный снег",
-			image: "/icons/partly-cloudy-day-snow.svg"
+			description: 'Сильный снег',
+			image: '/icons/partly-cloudy-day-snow.svg',
 		},
 		night: {
-			description: "Сильный снег",
-			image: "/icons/partly-cloudy-night-snow.svg"
-		}
+			description: 'Сильный снег',
+			image: '/icons/partly-cloudy-night-snow.svg',
+		},
 	},
-	"77": {
+	'77': {
 		day: {
-			description: "Снежная крупа",
-			image: "/icons/partly-cloudy-day-snow.svg"
+			description: 'Снежная крупа',
+			image: '/icons/partly-cloudy-day-snow.svg',
 		},
 		night: {
-			description: "Снежная крупа",
-			image: "/icons/partly-cloudy-night-snow.svg"
-		}
+			description: 'Снежная крупа',
+			image: '/icons/partly-cloudy-night-snow.svg',
+		},
 	},
-	"80": {
+	'80': {
 		day: {
-			description: "Легкий ливень",
-			image: "/icons/partly-cloudy-day-drizzle.svg"
+			description: 'Легкий ливень',
+			image: '/icons/partly-cloudy-day-drizzle.svg',
 		},
 		night: {
-			description: "Легкий ливень",
-			image: "/icons/partly-cloudy-day-drizzle.svg"
-		}
+			description: 'Легкий ливень',
+			image: '/icons/partly-cloudy-day-drizzle.svg',
+		},
 	},
-	"81": {
+	'81': {
 		day: {
-			description: "Ливень",
-			image: "/icons/partly-cloudy-day-rain.svg"
+			description: 'Ливень',
+			image: '/icons/partly-cloudy-day-rain.svg',
 		},
 		night: {
-			description: "Ливень",
-			image: "/icons/partly-cloudy-night-rain.svg"
-		}
+			description: 'Ливень',
+			image: '/icons/partly-cloudy-night-rain.svg',
+		},
 	},
-	"82": {
+	'82': {
 		day: {
-			description: "Сильный ливень",
-			image: "/icons/partly-cloudy-day-rain.svg"
+			description: 'Сильный ливень',
+			image: '/icons/partly-cloudy-day-rain.svg',
 		},
 		night: {
-			description: "Сильный ливень",
-			image: "/icons/partly-cloudy-night-rain.svg"
-		}
+			description: 'Сильный ливень',
+			image: '/icons/partly-cloudy-night-rain.svg',
+		},
 	},
-	"85": {
+	'85': {
 		day: {
-			description: "Легкий снегопад",
-			image: "/icons/partly-cloudy-day-snow.svg"
+			description: 'Легкий снегопад',
+			image: '/icons/partly-cloudy-day-snow.svg',
 		},
 		night: {
-			description: "Легкий снегопад",
-			image: "/icons/partly-cloudy-night-snow.svg"
-		}
+			description: 'Легкий снегопад',
+			image: '/icons/partly-cloudy-night-snow.svg',
+		},
 	},
-	"86": {
+	'86': {
 		day: {
-			description: "Снегопад",
-			image: "/icons/partly-cloudy-day-snow.svg"
+			description: 'Снегопад',
+			image: '/icons/partly-cloudy-day-snow.svg',
 		},
 		night: {
-			description: "Снегопад",
-			image: "/icons/partly-cloudy-night-snow.svg"
-		}
+			description: 'Снегопад',
+			image: '/icons/partly-cloudy-night-snow.svg',
+		},
 	},
-	"95": {
+	'95': {
 		day: {
-			description: "Гроза",
-			image: "/icons/thunderstorms-day.svg"
+			description: 'Гроза',
+			image: '/icons/thunderstorms-day.svg',
 		},
 		night: {
-			description: "Гроза",
-			image: "/icons/thunderstorms-night.svg"
-		}
+			description: 'Гроза',
+			image: '/icons/thunderstorms-night.svg',
+		},
 	},
-	"96": {
+	'96': {
 		day: {
-			description: "Легкая гроза с градом",
-			image: "/icons/thunderstorms-day.svg"
+			description: 'Легкая гроза с градом',
+			image: '/icons/thunderstorms-day.svg',
 		},
 		night: {
-			description: "Легкая гроза с градом",
-			image: "/icons/thunderstorms-night.svg"
-		}
+			description: 'Легкая гроза с градом',
+			image: '/icons/thunderstorms-night.svg',
+		},
 	},
-	"99": {
+	'99': {
 		day: {
-			description: "Гроза с градом",
-			image: "/icons/thunderstorms-day.svg"
+			description: 'Гроза с градом',
+			image: '/icons/thunderstorms-day.svg',
 		},
 		night: {
-			description: "Гроза с градом",
-			image: "/icons/thunderstorms-night.svg"
-		}
-	}
-};
+			description: 'Гроза с градом',
+			image: '/icons/thunderstorms-night.svg',
+		},
+	},
+}
 
-export function getWeatherDescription(code: number , isDay: number ): WeatherDescription  {
-	const status = isDay === 1 ? 'day' : 'night';
-	return weatherCode[String(code)]?.[status];
+export function getWeatherDescription(code: number, isDay: number): WeatherDescription {
+	const status = isDay === 1 ? 'day' : 'night'
+	return weatherCode[String(code)]?.[status]
 }

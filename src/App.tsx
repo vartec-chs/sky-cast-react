@@ -1,4 +1,3 @@
-import { Button } from './components/ui/button'
 import { Header } from '@/components/features/header'
 import { CurrentWeatherForecastSection } from '@/components/sections/current-weather-forecast'
 import { ManyDayWeatherForecastSection } from '@/components/sections/many-day-weather-forecast'

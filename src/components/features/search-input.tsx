@@ -65,6 +65,10 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 		setSearchText(value.display_name)
 		setUserLocality({ lat: value.lat, lon: value.lon, name: value.display_name })
 		setFocused(false)
+		window.localStorage.setItem(
+			'lastLocality',
+			JSON.stringify({ lat: value.lat, lon: value.lon, name: value.display_name }),
+		)
 		onClose && onClose()
 	}
 

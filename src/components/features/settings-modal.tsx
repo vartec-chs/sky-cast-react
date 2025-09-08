@@ -33,10 +33,9 @@ import { useUserLocality } from '@/hooks/useUserLocality'
 
 export function SettingsModal() {
 	const { theme, setTheme } = useTheme()
-	const [weatherModel, setWeatherModel] = useUserLocality((state) => [
-		state.weatherModel,
-		state.setWeatherModel,
-	])
+
+	const weatherModel = useUserLocality((state) => state.weatherModel)
+	const setWeatherModel = useUserLocality((state) => state.setWeatherModel)
 
 	const isMobile = useMedia('(max-width: 768px)')
 

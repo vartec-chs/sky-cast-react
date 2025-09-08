@@ -25,6 +25,7 @@ type Props = {
 	dayForecast: string
 	data: DailyWeatherForecast
 }
+const title = 'Усредненные погодные данные на'
 
 export const AverageDayForecast: FC<Props> = ({ dayForecast, data }) => {
 	const isMobile = useMedia('(max-width: 768px)')
@@ -35,8 +36,6 @@ export const AverageDayForecast: FC<Props> = ({ dayForecast, data }) => {
 		</Button>
 	)
 
-	const title = 'Усредненные погодные данные на'
-
 	const renderData = (
 		<div className='flex flex-col justify-center gap-1'>
 			<p className='text-center text-sm font-bold'>
@@ -46,15 +45,15 @@ export const AverageDayForecast: FC<Props> = ({ dayForecast, data }) => {
 			<div className='flex flex-row justify-between gap-1 p-2'>
 				<div className='flex flex-row items-center gap-2'>
 					<img src='/icons/wind.svg' alt='Logo' width={42} height={42} />
-					<p className='text-sm text-muted-foreground'>{data.averageWindSpeed} м/с</p>
+					<p className='text-muted-foreground text-sm'>{data.averageWindSpeed} м/с</p>
 				</div>
 				<div className='flex flex-row items-center gap-2'>
 					<img src='/icons/raindrop.svg' alt='Logo' width={42} height={42} />
-					<p className='text-sm text-muted-foreground'>{data.averagePrecipitation}%</p>
+					<p className='text-muted-foreground text-sm'>{data.averagePrecipitation}%</p>
 				</div>
 				<div className='flex flex-row items-center gap-2'>
 					<img src='/icons/compass.svg' alt='Logo' width={42} height={42} />
-					<p className='text-sm text-muted-foreground'>
+					<p className='text-muted-foreground text-sm'>
 						{getWindDirection(data.averageWindDirection)}
 					</p>
 				</div>

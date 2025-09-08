@@ -4,14 +4,15 @@ import toast from 'react-hot-toast'
 
 import { LoaderPinwheel, MapPin, Moon, Search, Sun } from 'lucide-react'
 
+import { Logo } from '../shared/logo'
 import { Button } from '../ui/button'
 import { useTheme } from '../ui/theme-provider'
-import { Logo } from './logo'
 import { SearchInput } from './search-input'
 import { SettingsModal } from './settings-modal'
 import { useGeolocation } from '@/hooks/useGeolacation'
 import { useIpLocality } from '@/hooks/useIpLocality'
 import { useUserLocality } from '@/hooks/useUserLocality'
+
 import { cn } from '@/lib/utils'
 
 export const Header: FC = () => {
@@ -30,8 +31,8 @@ export const Header: FC = () => {
 	}, [])
 
 	return (
-		<header className='sticky top-0 z-50 border-b-2 border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
-			<div className='container relative flex h-14 max-w-screen-xl items-center justify-between px-2'>
+		<header className='border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b-2 backdrop-blur'>
+			<div className='relative container flex h-14 max-w-screen-xl items-center justify-between px-2'>
 				<AnimatePresence>
 					{openSearch && (
 						<motion.div
@@ -39,7 +40,7 @@ export const Header: FC = () => {
 							animate={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -20 }}
 							transition={{ duration: 0.4, type: 'spring', ease: 'easeIn' }}
-							className='absolute left-0 right-2 top-2 w-full px-2'
+							className='absolute top-2 right-2 left-0 w-full px-2'
 						>
 							<SearchInput onClose={() => setOpenSearch(false)} />
 						</motion.div>

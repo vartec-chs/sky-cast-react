@@ -16,10 +16,17 @@ export interface SecrchLocality {
 }
 
 export interface IpUserLocality {
+	// regionName: string
+	// cityName: string
+	// latitude: string
+	// longitude: string
+	country: string
+	countryCode: string
+	region: string
 	regionName: string
-	cityName: string
-	latitude: string
-	longitude: string
+	city: string
+	lat: number
+	lon: number
 }
 
 export interface LatLonUserLocality {

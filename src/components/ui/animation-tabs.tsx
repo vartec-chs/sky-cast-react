@@ -82,7 +82,7 @@ export const AnimationTabs = ({
 						key={tab.id}
 						onClick={() => handleTabClick(tab.id)}
 						className={cn(
-							'relative flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-sm font-medium text-black transition focus-visible:outline-none focus-visible:outline-1 focus-visible:ring-1',
+							'relative flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-sm font-medium text-black transition focus-visible:outline-hidden focus-visible:outline-1 focus-visible:ring-1',
 							activeTab === tab.id
 								? 'text-black dark:text-white'
 								: 'text-slate-500 hover:text-slate-400',

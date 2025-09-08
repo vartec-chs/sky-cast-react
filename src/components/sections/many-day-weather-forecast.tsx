@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
 import { useQuery } from 'react-query'
 
-import { AverageDayForecast } from '../shared/averageDayForecast'
-import { DayWeatherForecastCard } from '../shared/day-weather-forecast-card'
+import { AverageDayForecast } from '../features/averageDayForecast'
+import { DayWeatherForecastCard } from '../features/day-weather-forecast-card'
 import { AnimationTabs } from '../ui/animation-tabs'
 import { Skeleton } from '../ui/skeleton'
 import { useUserLocality } from '@/hooks/useUserLocality'
@@ -12,7 +12,8 @@ import { PropsWithClassName } from '@/types/other'
 import { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
 export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ className }) => {
-	const [locality, weatherModel] = useUserLocality((state) => [state.locality, state.weatherModel])
+	const locality = useUserLocality((state) => state.locality)
+	const weatherModel = useUserLocality((state) => state.weatherModel)
 
 	const [dayForecast, setDayForecast] = useState('3')
 

@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+
 import { ScrollArea } from '../ui/scroll-area'
 import { Separator } from '../ui/separator'
 import { Skeleton } from '../ui/skeleton'
@@ -10,7 +11,9 @@ import { getWindDirection } from '@/lib/windDirection'
 import { PropsWithClassName } from '@/types/other'
 
 export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }) => {
-	const [locality, weatherModel] = useUserLocality((state) => [state.locality, state.weatherModel])
+
+	const locality = useUserLocality((state) => state.locality)
+	const weatherModel = useUserLocality((state) => state.weatherModel)
 	const { getWeatherForecast, weatherLoading, weatherForecast } = useCurrentWeatherForecast()
 
 	const isRendered = !(!weatherLoading && Boolean(weatherForecast))
@@ -46,7 +49,7 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 					{isRendered ? (
 						<Skeleton className='h-5 w-24' />
 					) : (
-						<p className='text-sm text-muted-foreground'>
+						<p className='text-muted-foreground text-sm'>
 							Сейчас {date.toLocaleTimeString()?.slice(0, -3)}
 						</p>
 					)}
@@ -64,7 +67,7 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 					{isRendered ? (
 						<Skeleton className='h-8 w-40' />
 					) : (
-						<p className='text-sm text-muted-foreground'>
+						<p className='text-muted-foreground text-sm'>
 							Вчера в это время {weatherForecast?.yesterdayTemperature}°C
 						</p>
 					)}
@@ -92,7 +95,7 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 						) : (
 							<>
 								<p className='text-2xl font-bold'>{weatherForecast?.temperature}°C</p>
-								<p className='text-sm text-muted-foreground'>
+								<p className='text-muted-foreground text-sm'>
 									Ощущается как {weatherForecast?.apparentTemperature}°C
 								</p>
 							</>
@@ -102,7 +105,7 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 						{isRendered ? (
 							<Skeleton className='h-5 w-28' />
 						) : (
-							<p className='text-sm text-muted-foreground'>{weatherForecast?.weatherDescription}</p>
+							<p className='text-muted-foreground text-sm'>{weatherForecast?.weatherDescription}</p>
 						)}
 					</div>
 				</div>
@@ -119,15 +122,15 @@ export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }
 					<>
 						<div className='flex flex-row items-center gap-2'>
 							<img src='/icons/wind.svg' alt='Logo' width={42} height={42} />
-							<p className='text-sm text-muted-foreground'>{weatherForecast?.windSpeed} м/с</p>
+							<p className='text-muted-foreground text-sm'>{weatherForecast?.windSpeed} м/с</p>
 						</div>
 						<div className='flex flex-row items-center gap-2'>
 							<img src='/icons/humidity.svg' alt='Logo' width={42} height={42} />
-							<p className='text-sm text-muted-foreground'>{weatherForecast?.relativeHumidity}%</p>
+							<p className='text-muted-foreground text-sm'>{weatherForecast?.relativeHumidity}%</p>
 						</div>
 						<div className='flex flex-row items-center gap-2'>
 							<img src='/icons/compass.svg' alt='Logo' width={42} height={42} />
-							<p className='text-sm text-muted-foreground'>
+							<p className='text-muted-foreground text-sm'>
 								{weatherForecast && getWindDirection(weatherForecast.windDirection)}
 							</p>
 						</div>

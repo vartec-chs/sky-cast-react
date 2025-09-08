@@ -27,7 +27,7 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 
 	const [locality, setLocality] = useState<SecrchLocality[]>()
 
-	const setUserLocality = useUserLocality((state) => state.setLocality)
+	// const setUserLocality = useUserLocality((state) => state.setLocality)
 
 	useDebounce(
 		async () => {
@@ -58,7 +58,7 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 
 	const onSelect = (value: { display_name: string; lat: string; lon: string }) => {
 		setSearchText(value.display_name)
-		setUserLocality({ lat: value.lat, lon: value.lon, name: value.display_name })
+		// setUserLocality({ lat: value.lat, lon: value.lon, name: value.display_name })
 		setFocused(false)
 		onClose && onClose()
 	}

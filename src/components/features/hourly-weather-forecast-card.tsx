@@ -10,7 +10,9 @@ import { cn } from '@/lib/utils'
 import { PropsWithClassName } from '@/types/other'
 
 export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className }) => {
-	const [locality, weatherModel] = useUserLocality((state) => [state.locality, state.weatherModel])
+	// const [locality, weatherModel] = useUserLocality((state) => [state.locality, state.weatherModel])
+	const locality = useUserLocality((state) => state.locality)
+	const weatherModel = useUserLocality((state) => state.weatherModel)
 	const { getWeatherForecast, weatherLoading, weatherForecast } = useHourlyWeatherForecast()
 
 	const scrollRef = useRef<HTMLDivElement | null>(null)

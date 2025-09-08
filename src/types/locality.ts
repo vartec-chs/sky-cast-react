@@ -27,6 +27,10 @@ export interface IpUserLocality {
 	longitude: number
 }
 
+export interface IpUserLocalityReserve extends Exclude<IpUserLocality, 'country_name'> {
+	country: string
+}
+
 export interface LatLonUserLocality {
 	address: {
 		city: string

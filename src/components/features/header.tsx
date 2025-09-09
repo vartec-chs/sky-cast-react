@@ -19,6 +19,8 @@ export const Header: FC = () => {
 	const [openSearch, setOpenSearch] = useState(false)
 
 	const isAutoLocality = useUserLocality((state) => state.isAutoLocality)
+	const isUsedFavoriteLocation = useUserLocality((state) => state.isUsedFavoriteLocation)
+	const setLocality = useUserLocality((state) => state.setLocality)
 
 	const geolocation = useGeolocation({
 		onError: (error) => toast.error('Ошибка получения геолокации: ' + error),
@@ -28,7 +30,19 @@ export const Header: FC = () => {
 	})
 
 	useEffect(() => {
-		if (isAutoLocality) {
+		const localStorageFavoriteS = window.localStorage.getItem('favoriteLocality')
+		if (isAutoLocality && !isUsedFavoriteLocation) {
+			ipLocality.getLocality()
+		} else if (isUsedFavoriteLocation && localStorageFavoriteS) {
+			const localStorageFavorite = JSON.parse(localStorageFavoriteS)
+			if (localStorageFavorite) {
+				setLocality({
+					lat: localStorageFavorite.lat,
+					lon: localStorageFavorite.lon,
+					name: localStorageFavorite.name,
+				})
+			}
+		} else {
 			ipLocality.getLocality()
 		}
 	}, [])

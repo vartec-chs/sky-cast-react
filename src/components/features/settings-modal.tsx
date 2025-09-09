@@ -2,7 +2,6 @@ import { useMedia } from 'react-use'
 
 import { Settings } from 'lucide-react'
 
-import { Label } from '../ui/label'
 import { useTheme } from '../ui/theme-provider'
 import { Button } from '@/components/ui/button'
 import {
@@ -21,6 +20,7 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from '@/components/ui/drawer'
+import { Label } from '@/components/ui/label'
 import {
 	Select,
 	SelectContent,
@@ -28,6 +28,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
+import { Switch } from '@/components/ui/switch'
 import { weatherModels } from '@/config'
 import { useUserLocality } from '@/hooks/useUserLocality'
 
@@ -35,9 +36,27 @@ export function SettingsModal() {
 	const { theme, setTheme } = useTheme()
 
 	const weatherModel = useUserLocality((state) => state.weatherModel)
+
 	const setWeatherModel = useUserLocality((state) => state.setWeatherModel)
 
 	const isMobile = useMedia('(max-width: 768px)')
+
+	const isUsedFavoriteLocation = useUserLocality((state) => state.isUsedFavoriteLocation)
+	const setIsUsedFavoriteLocation = useUserLocality((state) => state.setIsUsedFavoriteLocation)
+
+	const UsedFavoriteLocationSwitch = (
+		<div className='flex items-center space-x-2 pt-4'>
+			<Switch
+				id='location'
+				checked={isUsedFavoriteLocation}
+				onCheckedChange={(checked) => {
+					window.localStorage.setItem('isUsedFavoriteLocation', checked ? '1' : '0')
+					setIsUsedFavoriteLocation(checked)
+				}}
+			/>
+			<Label htmlFor='location'>Использовать местоположение по умолчанию</Label>
+		</div>
+	)
 
 	if (isMobile) {
 		return (
@@ -81,6 +100,7 @@ export function SettingsModal() {
 									))}
 								</SelectContent>
 							</Select>
+							{UsedFavoriteLocationSwitch}
 						</div>
 					</div>
 					<DialogFooter className='p-4'>
@@ -137,6 +157,7 @@ export function SettingsModal() {
 								))}
 							</SelectContent>
 						</Select>
+						{UsedFavoriteLocationSwitch}
 					</div>
 				</div>
 				<DialogFooter className='sm:justify-start'>

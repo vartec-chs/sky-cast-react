@@ -1,8 +1,8 @@
 import { FC, useEffect, useRef } from 'react'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
-import { ScrollArea, ScrollBar } from '../ui/scroll-area'
-import { Skeleton } from '../ui/skeleton'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../ui/card'
+import { ScrollArea, ScrollBar } from '../../ui/scroll-area'
+import { Skeleton } from '../../ui/skeleton'
 import { OneHourWeatherForecastCard } from './hour-weather-forecast-card'
 import { useHourlyWeatherForecast } from '@/hooks/useHourlyWeatherForecast'
 import { useUserLocality } from '@/hooks/useUserLocality'

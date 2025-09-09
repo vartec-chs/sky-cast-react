@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Card, CardContent, CardHeader } from '../ui/card'
+import { Card, CardContent, CardHeader } from '../../ui/card'
 import { cn } from '@/lib/utils'
 import { PropsWithClassName } from '@/types/other'
 

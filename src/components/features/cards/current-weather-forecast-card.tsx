@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react'
 
-import { ScrollArea } from '../ui/scroll-area'
-import { Separator } from '../ui/separator'
-import { Skeleton } from '../ui/skeleton'
+import { ScrollArea } from '../../ui/scroll-area'
+import { Separator } from '../../ui/separator'
+import { Skeleton } from '../../ui/skeleton'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { useCurrentWeatherForecast } from '@/hooks/useCurrentWeatherForecast'
 import { useUserLocality } from '@/hooks/useUserLocality'
@@ -11,7 +11,6 @@ import { getWindDirection } from '@/lib/windDirection'
 import { PropsWithClassName } from '@/types/other'
 
 export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }) => {
-
 	const locality = useUserLocality((state) => state.locality)
 	const weatherModel = useUserLocality((state) => state.weatherModel)
 	const { getWeatherForecast, weatherLoading, weatherForecast } = useCurrentWeatherForecast()

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Logo } from '../shared/logo'
+import { Logo } from '../../shared/logo'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { getWindDirection } from '@/lib/windDirection'

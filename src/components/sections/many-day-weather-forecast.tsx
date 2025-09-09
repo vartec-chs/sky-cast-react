@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { useQuery } from 'react-query'
 
 import { AverageDayForecast } from '../features/averageDayForecast'
-import { DayWeatherForecastCard } from '../features/day-weather-forecast-card'
+import { DayWeatherForecastCard } from '../features/cards/day-weather-forecast-card'
 import { AnimationTabs } from '../ui/animation-tabs'
 import { Skeleton } from '../ui/skeleton'
 import { useUserLocality } from '@/hooks/useUserLocality'

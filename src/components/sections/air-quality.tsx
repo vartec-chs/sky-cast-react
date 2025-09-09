@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { useQuery } from 'react-query'
 
+import { DustIndexCard } from '../features/cards/dust-index-card'
 import { PollenIndexCard } from '../features/cards/pollen-index-card'
 import { UVIndexCard } from '../features/cards/uv-index-card'
 import { useUserLocality } from '@/hooks/useUserLocality'
@@ -16,12 +17,16 @@ export const AirQualitySection: FC<PropsWithClassName> = ({ className }) => {
 		queryFn: () => getAirQuality(Number(locality?.lat), Number(locality?.lon)),
 		enabled: !!locality?.lat && !!locality?.lon,
 	})
-	const { data, isLoading, isError, error } = query
-	if (isError) return <p>{error.message}</p>
+	const { data, isLoading, isError } = query
+	if (isError) return null
 	return (
-		<section className={cn('flex w-full flex-row gap-4 max-sm:flex-col', className)}>
-			<UVIndexCard isLoading={isLoading} uvIndex={data?.current?.uv_index} />
-			<PollenIndexCard isLoading={isLoading} current={data?.current} />
+		<section className={cn('flex w-full flex-row gap-2 max-sm:flex-col', className)}>
+			<UVIndexCard
+				isLoading={isLoading || !data?.current}
+				uvIndex={data?.current?.uv_index_clear_sky}
+			/>
+			<PollenIndexCard isLoading={isLoading || !data?.current} current={data?.current} />
+			<DustIndexCard isLoading={isLoading || !data?.current} dust={data?.current?.dust || 0} />
 		</section>
 	)
 }

@@ -1,10 +1,6 @@
 import type { FC } from 'react'
 
-
-import {
-	Card,
-
-} from '@/components/ui/card'
+import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { getUVIndexLevel } from '@/lib/uvIndex'
@@ -15,8 +11,9 @@ type Props = PropsWithClassName & {
 	isLoading: boolean
 }
 
-export const UVIndexCard: FC<Props> = ({ className, uvIndex, isLoading }) => {
-	const isRendered = !isLoading && typeof uvIndex === 'number'
+export const UVIndexCard: FC<Props> = ({ className, uvIndex: uvValue, isLoading }) => {
+	const isRendered = !isLoading && typeof uvValue === 'number'
+	let uvIndex = Math.round(uvValue || 0)
 
 	const index = getUVIndexLevel(uvIndex || 0)
 	const color = index.color

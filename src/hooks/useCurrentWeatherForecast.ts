@@ -15,7 +15,7 @@ export const useCurrentWeatherForecast = () => {
 			if (!params) return undefined
 			return getCurrentWeatherForecast(params)
 		},
-		{ enabled: !!params },
+		{ enabled: !!params, refetchOnWindowFocus: false },
 	)
 
 	async function getWeatherForecast({ lat, lon, weatherModel }: WeatherServiceArgs) {

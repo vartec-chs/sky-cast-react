@@ -16,6 +16,7 @@ export const AirQualitySection: FC<PropsWithClassName> = ({ className }) => {
 		queryKey: ['airQuality', locality?.lat, locality?.lon],
 		queryFn: () => getAirQuality(Number(locality?.lat), Number(locality?.lon)),
 		enabled: !!locality?.lat && !!locality?.lon,
+		refetchOnWindowFocus: false,
 	})
 	const { data, isLoading, isError } = query
 	if (isError) return null

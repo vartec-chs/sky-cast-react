@@ -27,6 +27,7 @@ export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ classNam
 				weatherModel,
 			}),
 		enabled: !!locality,
+		refetchOnWindowFocus: false,
 	})
 
 	return (

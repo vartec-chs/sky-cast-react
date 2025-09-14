@@ -53,6 +53,8 @@ export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className })
 										icon={item.weatherIcon}
 										temperature={item.temperature}
 										precipitationProbability={item.precipitationProbability}
+										description={item.weatherDescription}
+										
 									/>
 								))}
 					</div>

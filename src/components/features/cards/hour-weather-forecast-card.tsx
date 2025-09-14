@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from '../../ui/card'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import type { PropsWithClassName } from '@/types/other'
+import { o } from 'node_modules/framer-motion/dist/types.d-Cjd591yU'
 
 type Props = {
 	time: string
@@ -37,6 +38,7 @@ export const OneHourWeatherForecastCard: FC<Props> = ({
 							'min-w-20 flex-1 rounded-2xl border-none px-1 py-1 shadow-none transition-colors hover:bg-slate-100 active:bg-slate-200 dark:hover:bg-slate-700 dark:active:bg-slate-800',
 
 							isCurrent && 'border bg-slate-100 dark:bg-slate-900',
+							open && 'border bg-slate-100 dark:bg-slate-800',
 							className,
 						)}
 					>

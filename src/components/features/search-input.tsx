@@ -11,7 +11,7 @@ import { Skeleton } from '../ui/skeleton'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
 import { searchLocality } from '@/services/searchLocality'
-import { SecrchLocality } from '@/types/locality'
+import { SecrchLocality, SecrchLocalityOpenMeteo } from '@/types/locality'
 import { PropsWithClassName } from '@/types/other'
 
 export type Props = {
@@ -25,7 +25,7 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 	const [focused, setFocused] = useState(false)
 	const ref = useRef(null)
 
-	const [locality, setLocality] = useState<SecrchLocality[]>()
+	const [locality, setLocality] = useState<SecrchLocalityOpenMeteo[]>()
 
 	const setUserLocality = useUserLocality((state) => state.setLocality)
 
@@ -122,13 +122,23 @@ export const SearchInput: FC<Props> = ({ className, onClose }) => {
 										'flex cursor-pointer flex-col gap-2 rounded-md border-sky-500 p-2 transition-all duration-200 hover:bg-slate-200 hover:text-sky-500 dark:hover:bg-slate-800'
 									}
 									onClick={() =>
-										onSelect({ lat: item.lat, lon: item.lon, display_name: item.display_name })
+										onSelect({
+											lat: String(item.latitude),
+											lon: String(item.longitude),
+											display_name: item.name + ', ' + (item.admin1 || item.country),
+										})
 									}
 								>
 									<div className='flex flex-row items-center justify-between'>
-										<p className='text-md'>{item.display_name}</p>
+										<p className='text-md'>{item.name + ', ' + (item.admin1 || item.country)}</p>
 										<Button
-											onClick={() => onClickAddFavorite(item)}
+											onClick={() =>
+												onClickAddFavorite({
+													lat: String(item.latitude),
+													lon: String(item.longitude),
+													name: item.name + ', ' + (item.admin1 || item.country),
+												})
+											}
 											variant='ghost'
 											size='icon'
 											className='ml-2 hover:text-yellow-500'

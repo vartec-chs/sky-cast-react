@@ -116,7 +116,7 @@ export function SettingsModal() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button variant='outline' size='icon' className='min-xl:hidden'>
+				<Button variant='outline' size='icon'>
 					<Settings size={16} />
 				</Button>
 			</DialogTrigger>

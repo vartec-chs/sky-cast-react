@@ -34,7 +34,7 @@ export const OneHourWeatherForecastCard: FC<Props> = ({
 							setOpen(!open)
 						}}
 						className={cn(
-							'min-w-20 flex-1 rounded-2xl border-none px-1 py-1 shadow-none transition-colors hover:bg-slate-100 dark:hover:bg-slate-700',
+							'min-w-20 flex-1 rounded-2xl border-none px-1 py-1 shadow-none transition-colors hover:bg-slate-100 active:bg-slate-200 dark:hover:bg-slate-700 dark:active:bg-slate-800',
 
 							isCurrent && 'border bg-slate-100 dark:bg-slate-900',
 							className,

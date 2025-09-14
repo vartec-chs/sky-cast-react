@@ -42,7 +42,7 @@ export const getHourlyWeatherForecast = async ({
 					time: currentHour === date.getHours() ? 'Сейчас' : String(date.getHours() + ':00'),
 					isCurrentTime: currentHour === date.getHours(),
 
-					temperature: data.hourly.temperature_2m[index],
+					temperature: Math.round(data.hourly.temperature_2m[index]),
 					precipitationProbability: data.hourly.precipitation_probability[index],
 					weatherCode: data.hourly.weather_code[index],
 					weatherDescription: weatherData.description,

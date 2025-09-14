@@ -68,14 +68,14 @@ export const getDailyWeatherForecast = async ({
 						'.' +
 						String(date.getMonth() + 1).padStart(2, '0'),
 					nameDay: nameDay,
-					minTemp: data.daily.temperature_2m_min[index],
-					maxTemp: data.daily.temperature_2m_max[index],
-					precipitationProbability: data.daily.precipitation_probability_max[index],
+					minTemp: Math.round(data.daily.temperature_2m_min[index]),
+					maxTemp: Math.round(data.daily.temperature_2m_max[index]),
+					precipitationProbability: Math.round(data.daily.precipitation_probability_max[index]),
 					weatherCode: data.daily.weather_code[index],
 					weatherDescription: weatherData?.description,
 					weatherIcon: weatherData?.image,
-					windSpeed: data.daily.wind_speed_10m_max[index],
-					windDirection: data.daily.wind_direction_10m_dominant[index],
+					windSpeed: Math.round(data.daily.wind_speed_10m_max[index]),
+					windDirection: Math.round(data.daily.wind_direction_10m_dominant[index]),
 				}
 			}),
 

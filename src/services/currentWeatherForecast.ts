@@ -78,19 +78,24 @@ export const getCurrentWeatherForecast = async ({
 			nameDay: nameDay,
 			elevation: data.elevation,
 			interval: data.current.interval,
-			temperature: data.current.temperature_2m,
-			relativeHumidity: data.current.relative_humidity_2m,
-			yesterdayTemperature:
+			temperature: (data.current.temperature_2m = Math.round(data.current.temperature_2m)),
+			relativeHumidity: Math.round(data.current.relative_humidity_2m),
+			yesterdayTemperature: Math.round(
 				yesterdayTemperatureData.hourly.temperature_2m[yesterdayTemperatureIndex],
-			windSpeed: data.current.wind_speed_10m,
+			),
+			windSpeed: (data.current.wind_speed_10m = Math.round(data.current.wind_speed_10m)),
 			weatherCode: data.current.weather_code,
-			windDirection: data.current.wind_direction_10m,
+			windDirection: (data.current.wind_direction_10m = Math.round(
+				data.current.wind_direction_10m,
+			)),
 			time: String(date.getHours() + ':' + date.getMinutes()),
 			weatherDescription: weatherDescription.description,
 			weatherIcon: weatherDescription.image,
 			isDay: data.current.is_day === 1 ? true : false,
 			precipitation: data.current.precipitation,
-			apparentTemperature: data.current.apparent_temperature,
+			apparentTemperature: (data.current.apparent_temperature = Math.round(
+				data.current.apparent_temperature,
+			)),
 		}
 
 		return responseData

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from '../../ui/card'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import type { PropsWithClassName } from '@/types/other'
-import { o } from 'node_modules/framer-motion/dist/types.d-Cjd591yU'
+
 
 type Props = {
 	time: string

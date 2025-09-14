@@ -83,11 +83,9 @@ export const getCurrentWeatherForecast = async ({
 			yesterdayTemperature: Math.round(
 				yesterdayTemperatureData.hourly.temperature_2m[yesterdayTemperatureIndex],
 			),
-			windSpeed: (data.current.wind_speed_10m = Math.round(data.current.wind_speed_10m)),
+			windSpeed: data.current.wind_speed_10m,
 			weatherCode: data.current.weather_code,
-			windDirection: (data.current.wind_direction_10m = Math.round(
-				data.current.wind_direction_10m,
-			)),
+			windDirection: data.current.wind_direction_10m,
 			time: String(date.getHours() + ':' + date.getMinutes()),
 			weatherDescription: weatherDescription.description,
 			weatherIcon: weatherDescription.image,

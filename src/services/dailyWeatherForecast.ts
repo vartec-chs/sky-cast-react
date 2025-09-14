@@ -74,8 +74,8 @@ export const getDailyWeatherForecast = async ({
 					weatherCode: data.daily.weather_code[index],
 					weatherDescription: weatherData?.description,
 					weatherIcon: weatherData?.image,
-					windSpeed: Math.round(data.daily.wind_speed_10m_max[index]),
-					windDirection: Math.round(data.daily.wind_direction_10m_dominant[index]),
+					windSpeed: data.daily.wind_speed_10m_max[index],
+					windDirection: data.daily.wind_direction_10m_dominant[index],
 				}
 			}),
 

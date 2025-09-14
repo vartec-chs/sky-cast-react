@@ -33,7 +33,7 @@ export const Header: FC = () => {
 		const localStorageFavoriteS = window.localStorage.getItem('favoriteLocality')
 		if (isAutoLocality && !isUsedFavoriteLocation) {
 			ipLocality.getLocality()
-		} else if (isUsedFavoriteLocation && localStorageFavoriteS) {
+		} else if (isAutoLocality && isUsedFavoriteLocation && localStorageFavoriteS) {
 			const localStorageFavorite = JSON.parse(localStorageFavoriteS)
 			if (localStorageFavorite) {
 				setLocality({
@@ -42,7 +42,7 @@ export const Header: FC = () => {
 					name: localStorageFavorite.name,
 				})
 			}
-		} else {
+		} else if (isAutoLocality) {
 			ipLocality.getLocality()
 		}
 	}, [])

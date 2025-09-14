@@ -40,7 +40,7 @@ export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className })
 				<CardTitle>Температура</CardTitle>
 				<CardDescription>Средняя на сегодня по часа</CardDescription>
 			</CardHeader>
-			<CardContent className='grid grid-cols-1 p-0 px-4 pb-4'>
+			<CardContent className='grid grid-cols-1 p-0 px-2 pb-2'>
 				<ScrollArea ref={scrollRef} className='w-full whitespace-nowrap'>
 					<div className='flex gap-2'>
 						{isRendered

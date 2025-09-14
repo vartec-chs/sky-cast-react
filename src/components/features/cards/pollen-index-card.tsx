@@ -1,9 +1,6 @@
 import type { FC } from 'react'
 
-import {
-	Card,
-	
-} from '@/components/ui/card'
+import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getPollenIndexLevel } from '@/lib/pollenIndex'
 import { cn } from '@/lib/utils'

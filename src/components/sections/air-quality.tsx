@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { useQuery } from 'react-query'
 
+import { AirQualityCard } from '../features/cards/air-quality-card'
 import { DustIndexCard } from '../features/cards/dust-index-card'
 import { PollenIndexCard } from '../features/cards/pollen-index-card'
 import { UVIndexCard } from '../features/cards/uv-index-card'
@@ -28,6 +29,10 @@ export const AirQualitySection: FC<PropsWithClassName> = ({ className }) => {
 			/>
 			<PollenIndexCard isLoading={isLoading || !data?.current} current={data?.current} />
 			<DustIndexCard isLoading={isLoading || !data?.current} dust={data?.current?.dust || 0} />
+			<AirQualityCard
+				isLoading={isLoading || !data?.current}
+				airQualityIndex={data?.current?.european_aqi}
+			/>
 		</section>
 	)
 }

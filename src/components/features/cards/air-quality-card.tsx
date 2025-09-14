@@ -2,19 +2,20 @@ import type { FC } from 'react'
 
 import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import { getDustIndexLevel } from '@/lib/dustIndex'
+import { getAirQualityLevel } from '@/lib/airQuality'
 import { cn } from '@/lib/utils'
 import { PropsWithClassName } from '@/types/other'
 
 type Props = PropsWithClassName & {
-	dust: number
+	airQualityIndex?: number
 	isLoading: boolean
 }
 
-export const DustIndexCard: FC<Props> = ({ className, dust, isLoading }) => {
-	const isRendered = !isLoading && typeof dust === 'number'
+export const AirQualityCard: FC<Props> = ({ className, airQualityIndex: aqiValue, isLoading }) => {
+	const isRendered = !isLoading && typeof aqiValue === 'number'
+	let aqiIndex = Math.round(aqiValue || 0)
 
-	const index = getDustIndexLevel(dust)
+	const index = getAirQualityLevel(aqiIndex || 0)
 	const color = index.color
 
 	if (isLoading) {
@@ -25,12 +26,19 @@ export const DustIndexCard: FC<Props> = ({ className, dust, isLoading }) => {
 		)
 	}
 
+	const icon = `/icons/smoke-particles.svg`
+
 	return (
-		<div className={cn('border-muted rounded-2xl border p-2', className)}>
+		<div
+			className={cn(
+				'border-muted flex items-center justify-between rounded-2xl border p-2',
+				className,
+			)}
+		>
 			<div className='flex w-full flex-row items-center justify-between gap-2 p-1'>
 				<div className='flex flex-col items-center'>
-					<h1 className='text-md font-semibold'>Индекс пыли</h1>
-					<img className='h-8 w-8' src='/icons/dust.svg' alt='' />
+					<h1 className='text-md font-semibold'>EU Качество воздуха</h1>
+					<img className='h-8 w-8' src={icon} alt='' />
 				</div>
 
 				<div className='flex flex-col items-center rounded-full text-sm'>
@@ -41,7 +49,7 @@ export const DustIndexCard: FC<Props> = ({ className, dust, isLoading }) => {
 								[color]: true,
 							})}
 						>
-							{dust} <span className='text-xs'>μg/m³</span>
+							{aqiIndex} <span className='text-xs'>EAQI</span>
 						</h2>
 					</div>
 

@@ -38,7 +38,7 @@ export const UVIndexCard: FC<Props> = ({ className, uvIndex: uvValue, isLoading 
 				className,
 			)}
 		>
-			<div className='flex w-full flex-row justify-between gap-2 p-1'>
+			<div className='flex w-full flex-row items-center justify-between gap-2 p-1'>
 				<div className='flex flex-col items-center'>
 					<h1 className='text-md font-semibold'>Индекс УФ</h1>
 					<img className='h-8 w-8' src={icon} alt='' />

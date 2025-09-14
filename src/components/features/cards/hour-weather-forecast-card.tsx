@@ -23,7 +23,7 @@ export const OneHourWeatherForecastCard: FC<Props> = ({
 	return (
 		<Card
 			className={cn(
-				'min-w-20 flex-1 rounded-2xl border-none px-2 py-2 shadow-none',
+				'min-w-20 flex-1 rounded-2xl border-none px-1 py-1 shadow-none',
 
 				isCurrent && 'border bg-slate-200 dark:bg-slate-800',
 				className,

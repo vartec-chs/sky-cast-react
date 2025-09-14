@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { useUserLocality } from './useUserLocality'
-import { IpUserLocality, IpUserLocalityReserve, LatLonUserLocality } from '@/types/locality'
+import type { IpUserLocality, IpUserLocalityReserve, LatLonUserLocality } from '@/types/locality'
 
 export const useIpLocality = ({ onError }: { onError: (error: Error) => void }) => {
 	const [locality, setLocality] = useState<IpUserLocality | null>(null)

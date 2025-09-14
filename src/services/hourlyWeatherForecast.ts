@@ -1,8 +1,8 @@
 import { weatherApiUrl } from '@/config'
 import { getWeatherDescription } from '@/lib/weatherСode'
-import { WeatherServiceArgs } from '@/types/other'
-import { HourlyWeatherForecastApiResponse } from '@/types/wetherForecastApiResponse'
-import { HourlyWeatherForecast } from '@/types/wetherForecastServiceReturn'
+import type { WeatherServiceArgs } from '@/types/other'
+import type { HourlyWeatherForecastApiResponse } from '@/types/wetherForecastApiResponse'
+import type { HourlyWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
 export const getHourlyWeatherForecast = async ({
 	lat,

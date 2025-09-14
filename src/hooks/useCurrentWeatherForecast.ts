@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useQuery, useQueryClient } from 'react-query'
 
 import { getCurrentWeatherForecast } from '@/services/currentWeatherForecast'
-import { WeatherServiceArgs } from '@/types/other'
-import { CurrentWeatherForecast } from '@/types/wetherForecastServiceReturn'
+import type { WeatherServiceArgs } from '@/types/other'
+import type { CurrentWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
 export const useCurrentWeatherForecast = () => {
 	const [params, setParams] = useState<WeatherServiceArgs | null>(null)

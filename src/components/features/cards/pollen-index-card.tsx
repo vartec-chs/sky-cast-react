@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getPollenIndexLevel } from '@/lib/pollenIndex'
 import { cn } from '@/lib/utils'
-import { CurrentUnits, Pollens, PropsWithClassName } from '@/types/other'
+import type { CurrentUnits, Pollens, PropsWithClassName } from '@/types/other'
 
 type Props = PropsWithClassName & {
 	current?: CurrentUnits

@@ -4,7 +4,7 @@ import { Logo } from '../../shared/logo'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { getWindDirection } from '@/lib/windDirection'
-import { PropsWithClassName } from '@/types/other'
+import type { PropsWithClassName } from '@/types/other'
 
 type Props = {
 	date: string

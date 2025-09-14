@@ -11,8 +11,8 @@ import { Skeleton } from '../ui/skeleton'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
 import { searchLocality } from '@/services/searchLocality'
-import { SecrchLocality, SecrchLocalityOpenMeteo } from '@/types/locality'
-import { PropsWithClassName } from '@/types/other'
+import type {  SecrchLocalityOpenMeteo } from '@/types/locality'
+import type { PropsWithClassName } from '@/types/other'
 
 export type Props = {
 	onClose?: () => void

@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Card, CardContent, CardHeader } from '../../ui/card'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
-import { PropsWithClassName } from '@/types/other'
+import type { PropsWithClassName } from '@/types/other'
 
 type Props = {
 	time: string

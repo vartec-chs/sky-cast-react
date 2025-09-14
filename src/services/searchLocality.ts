@@ -1,4 +1,4 @@
-import { SecrchLocality, SecrchLocalityOpenMeteo } from '@/types/locality'
+import type {  SecrchLocalityOpenMeteo } from '@/types/locality'
 
 export const searchLocality = async (
 	searchText: string,

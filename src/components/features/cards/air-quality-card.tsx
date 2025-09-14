@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getAirQualityLevel } from '@/lib/airQuality'
 import { cn } from '@/lib/utils'
-import { PropsWithClassName } from '@/types/other'
+import type { PropsWithClassName } from '@/types/other'
 
 type Props = PropsWithClassName & {
 	airQualityIndex?: number

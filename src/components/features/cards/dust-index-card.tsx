@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getDustIndexLevel } from '@/lib/dustIndex'
 import { cn } from '@/lib/utils'
-import { PropsWithClassName } from '@/types/other'
+import type { PropsWithClassName } from '@/types/other'
 
 type Props = PropsWithClassName & {
 	dust: number

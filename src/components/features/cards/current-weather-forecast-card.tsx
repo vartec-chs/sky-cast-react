@@ -8,7 +8,7 @@ import { useCurrentWeatherForecast } from '@/hooks/useCurrentWeatherForecast'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
 import { getWindDirection } from '@/lib/windDirection'
-import { PropsWithClassName } from '@/types/other'
+import type { PropsWithClassName } from '@/types/other'
 
 export const CurrentWeatherForecastCard: FC<PropsWithClassName> = ({ className }) => {
 	const locality = useUserLocality((state) => state.locality)

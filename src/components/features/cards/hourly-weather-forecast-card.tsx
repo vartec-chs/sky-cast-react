@@ -7,7 +7,7 @@ import { OneHourWeatherForecastCard } from './hour-weather-forecast-card'
 import { useHourlyWeatherForecast } from '@/hooks/useHourlyWeatherForecast'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
-import { PropsWithClassName } from '@/types/other'
+import  type { PropsWithClassName } from '@/types/other'
 
 export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className }) => {
 	const locality = useUserLocality((state) => state.locality)
@@ -54,7 +54,7 @@ export const HourlyWeatherForecastCard: FC<PropsWithClassName> = ({ className })
 										temperature={item.temperature}
 										precipitationProbability={item.precipitationProbability}
 										description={item.weatherDescription}
-										
+
 									/>
 								))}
 					</div>

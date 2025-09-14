@@ -8,8 +8,8 @@ import { Skeleton } from '../ui/skeleton'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
 import { getDailyWeatherForecast } from '@/services/dailyWeatherForecast'
-import { PropsWithClassName } from '@/types/other'
-import { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
+import type { PropsWithClassName } from '@/types/other'
+import type { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
 export const ManyDayWeatherForecastSection: FC<PropsWithClassName> = ({ className }) => {
 	const locality = useUserLocality((state) => state.locality)

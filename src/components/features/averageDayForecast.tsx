@@ -28,7 +28,7 @@ import {
 	DrawerTrigger,
 } from '@/components/ui/drawer'
 import { getWindDirection } from '@/lib/windDirection'
-import { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
+import type { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
 type Props = {
 	dayForecast: string

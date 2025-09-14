@@ -8,7 +8,7 @@ import { UVIndexCard } from '../features/cards/uv-index-card'
 import { useUserLocality } from '@/hooks/useUserLocality'
 import { cn } from '@/lib/utils'
 import { getAirQuality } from '@/services/airQuality'
-import { AirQualityResponse, PropsWithClassName } from '@/types/other'
+import  type { AirQualityResponse, PropsWithClassName } from '@/types/other'
 
 export const AirQualitySection: FC<PropsWithClassName> = ({ className }) => {
 	const locality = useUserLocality((state) => state.locality)

@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { getUVIndexLevel } from '@/lib/uvIndex'
-import { PropsWithClassName } from '@/types/other'
+import  type { PropsWithClassName } from '@/types/other'
 
 type Props = PropsWithClassName & {
 	uvIndex?: number

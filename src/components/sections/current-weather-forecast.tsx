@@ -4,7 +4,7 @@ import { AirQualitySection } from './air-quality'
 import { CurrentWeatherForecastCard } from '@/components/features/cards/current-weather-forecast-card'
 import { HourlyWeatherForecastCard } from '@/components/features/cards/hourly-weather-forecast-card'
 import { cn } from '@/lib/utils'
-import { PropsWithClassName } from '@/types/other'
+import type { PropsWithClassName } from '@/types/other'
 
 export const CurrentWeatherForecastSection: FC<PropsWithClassName> = ({ className }) => {
 	return (

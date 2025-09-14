@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { useUserLocality } from './useUserLocality'
-import { LatLonUserLocality } from '@/types/locality'
+import type { LatLonUserLocality } from '@/types/locality'
 
 export const useGeolocation = ({ onError }: { onError?: (error: string) => void }) => {
 	const [location, setLocation] = useState<{ lat: number; lon: number; name: string } | null>(null)

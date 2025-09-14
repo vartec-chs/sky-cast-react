@@ -1,8 +1,8 @@
 import { weatherApiUrl } from '@/config'
 import { WeatherDescription, getWeatherDescription } from '@/lib/weatherСode'
-import { WeatherServiceArgs } from '@/types/other'
-import { DailyWeatherForecastApiResponse } from '@/types/wetherForecastApiResponse'
-import { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
+import type { WeatherServiceArgs } from '@/types/other'
+import type { DailyWeatherForecastApiResponse } from '@/types/wetherForecastApiResponse'
+import type { DailyWeatherForecast } from '@/types/wetherForecastServiceReturn'
 
 export const getDailyWeatherForecast = async ({
 	lat,
@@ -46,7 +46,7 @@ export const getDailyWeatherForecast = async ({
 				const isDay = date.getHours() >= 6 && date.getHours() <= 18
 
 				if (weatherCode === undefined) {
-					weatherData = { description: '', image: '' }
+					weatherData = { description: '', image: '', short: '' }
 				} else {
 					weatherData = getWeatherDescription(weatherCode, isDay ? 1 : 0)
 				}

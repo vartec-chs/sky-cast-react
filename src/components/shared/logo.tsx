@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { useTheme } from '../ui/theme-provider'
-import { PropsWithClassName } from '@/types/other'
+import type { PropsWithClassName } from '@/types/other'
 
 export const Logo: FC<PropsWithClassName> = ({ className }) => {
 	const { theme } = useTheme()

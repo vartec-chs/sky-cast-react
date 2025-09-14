@@ -1,4 +1,4 @@
-import { AirQualityResponse } from '@/types/other'
+import type { AirQualityResponse } from '@/types/other'
 
 // https://air-quality-api.open-meteo.com/v1/air-quality?latitude=52.52&longitude=13.41&current=european_aqi,pm10,pm2_5,dust,uv_index,uv_index_clear_sky,ragweed_pollen,olive_pollen,mugwort_pollen,birch_pollen,grass_pollen,alder_pollen&forecast_days=1
 

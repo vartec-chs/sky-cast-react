@@ -1,4 +1,4 @@
-import { UVIndexBreakpoints, UVIndexColors } from '@/types/other'
+import  { UVIndexBreakpoints, UVIndexColors } from '@/types/other'
 
 export function getUVIndexLevel(uvIndex: number) {
 	if (uvIndex <= UVIndexBreakpoints[0]) {

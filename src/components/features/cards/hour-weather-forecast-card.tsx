@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import { Card, CardContent, CardHeader } from '../../ui/card'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
@@ -21,13 +21,18 @@ export const OneHourWeatherForecastCard: FC<Props> = ({
 	description,
 	precipitationProbability,
 }) => {
+	const [open, setOpen] = useState(false)
 	const isCurrent = time === 'Сейчас'
 
 	return (
 		<TooltipProvider>
-			<Tooltip>
+			<Tooltip open={open} onOpenChange={setOpen}>
 				<TooltipTrigger asChild>
 					<Card
+						onClick={() => {
+							window.scrollTo({ top: 0, behavior: 'smooth' })
+							setOpen(!open)
+						}}
 						className={cn(
 							'min-w-20 flex-1 rounded-2xl border-none px-1 py-1 shadow-none transition-colors hover:bg-slate-100 dark:hover:bg-slate-700',
 

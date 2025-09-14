@@ -35,7 +35,9 @@ export const OneHourWeatherForecastCard: FC<Props> = ({
 							className,
 						)}
 					>
-						<CardHeader className='px-2 py-0'>
+						<CardHeader
+							className={cn('px-2 py-0', isCurrent && 'mb-1 flex flex-col items-center gap-0')}
+						>
 							<p
 								className={cn(
 									'text-md text-muted-foreground text-center',
@@ -43,6 +45,11 @@ export const OneHourWeatherForecastCard: FC<Props> = ({
 								)}
 							>
 								{time}
+								{isCurrent && (
+									<p className='text-[12px]'>
+										{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+									</p>
+								)}
 							</p>
 						</CardHeader>
 
